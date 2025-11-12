@@ -138,7 +138,7 @@ class QueryProcessor(ABC):
         
         return keywords
 
-
+newline = "\n"
 class BasicQueryProcessor(QueryProcessor):
     """Basic query processor for standard retrieval and generation."""
     
@@ -283,7 +283,7 @@ class BasicQueryProcessor(QueryProcessor):
                         entities_str.append(f"- {entity_name}: {description}")
                     else:
                         entities_str.append(f"- {str(entity)}")
-                context_parts.append(f"Entity information:\n{"\n".join(entities_str)}")
+                context_parts.append(f"Entity information:\n{f'{newline}'.join(entities_str)}")
         
         # Add relationship information
         if context.get("relationships"):
@@ -301,7 +301,7 @@ class BasicQueryProcessor(QueryProcessor):
                         relations_str.append(f"- {src_id} {relation_name} {tgt_id}")
                     else:
                         relations_str.append(f"- {str(rel)}")
-                context_parts.append(f"Relationship information:\n{"\n".join(relations_str)}")
+                context_parts.append(f"Relationship information:\n{f'{newline}'.join(relations_str)}")
         
         # Add text chunk information
         if context.get("chunks"):
@@ -317,7 +317,7 @@ class BasicQueryProcessor(QueryProcessor):
                         chunks_str.append(f"- {content[:200]}...")
                     else:
                         chunks_str.append(f"- {str(chunk)[:200]}...")
-                context_parts.append(f"Text chunk information:\n{"\n".join(chunks_str)}")
+                context_parts.append(f"Text chunk information:\n{f'{newline}'.join(chunks_str)}")
         
         # Add community information
         if context.get("communities"):
@@ -333,7 +333,7 @@ class BasicQueryProcessor(QueryProcessor):
                         communities_str.append(f"- {report_string[:200]}...")
                     else:
                         communities_str.append(f"- {str(comm)[:200]}...")
-                context_parts.append(f"Community information:\n{"\n".join(communities_str)}")
+                context_parts.append(f"Community information:\n{f'{newline}'.join(communities_str)}")
         
         return "\n\n".join(context_parts)
 
@@ -436,7 +436,7 @@ class PPRQueryProcessor(QueryProcessor):
                         entities_str.append(f"- {entity_name} (PPR score: {ppr_score:.3f})")
                     else:
                         entities_str.append(f"- {str(entity)}")
-                context_parts.append(f"PPR-ranked entities:\n{"\n".join(entities_str)}")
+                context_parts.append(f"PPR-ranked entities:\n{f'{newline}'.join(entities_str)}")
         
         # Add relationship information
         if context.get("relationships"):
@@ -454,7 +454,7 @@ class PPRQueryProcessor(QueryProcessor):
                         relations_str.append(f"- {src_id} {relation_name} {tgt_id}")
                     else:
                         relations_str.append(f"- {str(rel)}")
-                context_parts.append(f"Relationship information:\n{"\n".join(relations_str)}")
+                context_parts.append(f"Relationship information:\n{f'{newline}'.join(relations_str)}")
         
         # Add text chunk information
         if context.get("chunks"):
@@ -470,7 +470,7 @@ class PPRQueryProcessor(QueryProcessor):
                         chunks_str.append(f"- {content[:200]}...")
                     else:
                         chunks_str.append(f"- {str(chunk)[:200]}...")
-                context_parts.append(f"Text chunk information:\n{"\n".join(chunks_str)}")
+                context_parts.append(f"Text chunk information:\n{f'{newline}'.join(chunks_str)}")
         
         return "\n\n".join(context_parts)
 
@@ -581,7 +581,7 @@ class ToGQueryProcessor(QueryProcessor):
                     except Exception as e:
                         logger.warning(f"Error processing path {path}: {e}")
                         paths_str.append(f"- Path: {str(path)}")
-                context_parts.append(f"Relevant paths:\n{"\n".join(paths_str)}")
+                context_parts.append(f"Relevant paths:\n{f'{newline}'.join(paths_str)}")
         
         # Add subgraph information
         if context.get("subgraphs"):

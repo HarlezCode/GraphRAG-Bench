@@ -33,7 +33,7 @@ class RAGQueryDataset(Dataset):
         super().__init__()
         
         self.corpus_path = os.path.join(data_dir, "Corpus.json")
-        self.qa_path = os.path.join(data_dir, "Question.json")
+        self.qa_path = os.path.join(data_dir, "Question.jsonl")
         self.dataset = pd.read_json(self.qa_path, lines=True, orient="records")
 
     def get_corpus(self) -> List[Dict[str, Any]]:
@@ -43,13 +43,13 @@ class RAGQueryDataset(Dataset):
         Returns:
             List of dictionaries containing corpus documents with title, content, and doc_id
         """
-        corpus = pd.read_json(self.corpus_path, lines=True)
+        corpus = pd.read_json(self.corpus_path)
         corpus_list = []
         
         for i in range(len(corpus)):
             corpus_list.append({
-                "title": corpus.iloc[i]["title"],
-                "content": corpus.iloc[i]["context"],
+                "title": corpus.iloc[i]["section"] + " " + corpus.iloc[i]["subsection"] + " " + corpus.iloc[i]["subsubsection"],
+                "content": corpus.iloc[i]["content"],
                 "doc_id": i,
             })
         
@@ -69,9 +69,9 @@ class RAGQueryDataset(Dataset):
         Returns:
             Dictionary containing the sample data with question, answer, and other attributes
         """
-        question = self.dataset.iloc[idx]["question"]
-        answer = self.dataset.iloc[idx]["answer"]
-        other_attrs = self.dataset.iloc[idx].drop(["answer", "question"])
+        question = self.dataset.iloc[idx]["Question"]
+        answer = self.dataset.iloc[idx]["Answer"]
+        other_attrs = self.dataset.iloc[idx].drop(["Answer", "Question"])
         
         return {
             "id": idx,
@@ -83,9 +83,6 @@ class RAGQueryDataset(Dataset):
 
 if __name__ == "__main__":
     # Example usage
-    corpus_path = "tmp.json"
-    qa_path = "tmp.json"
+    qa_path = "./GraphRAG-Bench/"
     query_dataset = RAGQueryDataset(data_dir=qa_path)
     corpus = query_dataset.get_corpus()
-    print(corpus[0])
-    print(query_dataset[0])
