@@ -1,0 +1,86 @@
+2025-11-11 15:32:31.999 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-11 15:32:32.000 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-11 15:32:36.409 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-11 15:32:36.410 | ERROR    | __main__:main:243 - Application execution failed
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 252, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7dac7598dc60>
+    │       └ <function run at 0x7dadf979dee0>
+    └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x7dac75bf7340>
+           │      └ <function Runner.run at 0x7dadf9651620>
+           └ <asyncio.runners.Runner object at 0x7dadabff2350>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at /data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py:243> cb=[_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7dadf964b1a0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7dadabff2350>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7dadf964b100>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7dadf9650f40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7dadf979e980>
+    └ <Handle <TaskStepMethWrapper object at 0x7dac7596f040>()>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x7dac7596f040>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x7dac7596f040>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x7dac7596f040>()>
+
+> File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 216, in main
+    app.initialize()
+    │   └ <function GraphRAGApplication.initialize at 0x7dac7598c2c0>
+    └ <__main__.GraphRAGApplication object at 0x7dac806c2e90>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 45, in initialize
+    self.engine = GraphRAGEngine(config=self.config)
+    │    │        │                     │    └ MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./Data', dataset_name='Gr...
+    │    │        │                     └ <__main__.GraphRAGApplication object at 0x7dac806c2e90>
+    │    │        └ <class 'Core.Engine.GraphRAGEngine.GraphRAGEngine'>
+    │    └ None
+    └ <__main__.GraphRAGApplication object at 0x7dac806c2e90>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/pydantic/main.py", line 214, in __init__
+    validated_self = self.__pydantic_validator__.validate_python(data, self_instance=self)
+                     │    │                      │               │                   └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+                     │    │                      │               └ {'config': MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./Data', datas...
+                     │    │                      └ <method 'validate_python' of 'pydantic_core._pydantic_core.SchemaValidator' objects>
+                     │    └ SchemaValidator(title="GraphRAGEngine", validator=FunctionAfter(
+                     │          FunctionAfterValidator {
+                     │              validator: Model(
+                     │           ...
+                     └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 99, in initialize_system_components
+    self._register_core_components()
+    │    └ <function GraphRAGEngine._register_core_components at 0x7dad9f189120>
+    └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 137, in _register_core_components
+    self._create_query_processor()
+    │    └ <function GraphRAGEngine._create_query_processor at 0x7dad9f189300>
+    └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 163, in _create_query_processor
+    from Core.Querying.QueryProcessorFactory import QueryProcessorFactory
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Querying/QueryProcessorFactory.py", line 286
+    context_parts.append(f"Entity information:\n{'\n'.join(entities_str)}")
+                                                                          ^
+
+SyntaxError: f-string expression part cannot include a backslash

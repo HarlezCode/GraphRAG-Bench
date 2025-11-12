@@ -1,0 +1,202 @@
+2025-11-12 14:04:38.544 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-12 14:04:38.545 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-12 14:04:42.951 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-12 14:04:42.952 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-12 14:04:42.952 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-12 14:04:42.968 | INFO     | Core.Engine.GraphRAGEngine:process_documents:188 - 🚀 Starting document processing workflow
+2025-11-12 14:04:43.244 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 0.187(s), this was the 1st time calling it.
+2025-11-12 14:04:43.325 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 0.268(s), this was the 2nd time calling it.
+2025-11-12 14:04:44.309 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 1.251(s), this was the 3rd time calling it.
+2025-11-12 14:04:46.331 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 3.273(s), this was the 4th time calling it.
+2025-11-12 14:04:48.636 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 5.578(s), this was the 5th time calling it.
+2025-11-12 14:05:03.448 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 20.390(s), this was the 6th time calling it.
+2025-11-12 14:05:03.448 | ERROR    | Core.Common.Utils:log_and_reraise:312 - Retry attempts exhausted. Last exception: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-11-12 14:05:03.448 | WARNING  | Core.Common.Utils:log_and_reraise:313 - 
+Recommend going to https://deepwisdom.feishu.cn/wiki/MsGnwQBjiif9c3koSJNcYaoSnu4#part-XdatdVlhEojeAfxaaEZcMV3ZniQ
+See FAQ 5.8
+
+2025-11-12 14:05:03.448 | ERROR    | Core.Engine.GraphRAGEngine:process_documents:238 - ❌ Document processing failed: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-11-12 14:05:03.448 | ERROR    | __main__:main:243 - Application execution failed
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 252, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x766b27e91c60>
+    │       └ <function run at 0x766cabd9dee0>
+    └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x766b280f7340>
+           │      └ <function Runner.run at 0x766cabc51620>
+           └ <asyncio.runners.Runner object at 0x766cabb31dd0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at /data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py:243> cb=[_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x766cabc4b1a0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x766cabb31dd0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x766cabc4b100>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x766cabc50f40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x766cabd9e980>
+    └ <Handle <TaskStepMethWrapper object at 0x766b27e6eec0>()>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x766b27e6eec0>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x766b27e6eec0>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x766b27e6eec0>()>
+
+> File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 223, in main
+    await app.process_documents(force_rebuild=args.force_rebuild)
+          │   │                               │    └ False
+          │   │                               └ Namespace(opt='./Option/merged_config.yaml', dataset_name='GraphRAG-Bench', method='hippo_rag', force_rebuild=False, max_quer...
+          │   └ <function GraphRAGApplication.process_documents at 0x766b27e90360>
+          └ <__main__.GraphRAGApplication object at 0x766b27e8ff10>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 63, in process_documents
+    await self.engine.process_documents(corpus, force_rebuild=force_rebuild)
+          │    │      │                 │                     └ False
+          │    │      │                 └ [{'title': 'What is an algorithm? N/A N/A', 'content': '\n\nIntroduction \n0.1 What is an algorithm? \nAn algorithm is an exp...
+          │    │      └ <function GraphRAGEngine.process_documents at 0x766c517854e0>
+          │    └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+          └ <__main__.GraphRAGApplication object at 0x766b27e8ff10>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 198, in process_documents
+    await self._execute_stage("graph_construction", chunks, force_rebuild)
+          │    │                                    │       └ False
+          │    │                                    └ [TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0...
+          │    └ <function GraphRAGEngine._execute_stage at 0x766c51785580>
+          └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 246, in _execute_stage
+    await stage.execute(*args, **kwargs)
+          │     │        │       └ {}
+          │     │        └ ([TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n...
+          │     └ <function EntityRelationGraphBuilder.execute at 0x766af7716a20>
+          └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x766af79ed6d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 95, in execute
+    self.graph = await self._build_graph(chunks)
+    │    │             │    │            └ [TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0...
+    │    │             │    └ <function EntityRelationGraphBuilder._build_graph at 0x766af7716ac0>
+    │    │             └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x766af79ed6d0>
+    │    └ None
+    └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x766af79ed6d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 107, in _build_graph
+    entities, relationships = await self._extract_entities_relations(chunk)
+                                    │    │                           └ TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0....
+                                    │    └ <function EntityRelationGraphBuilder._extract_entities_relations at 0x766af7716b60>
+                                    └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x766af79ed6d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 135, in _extract_entities_relations
+    entities = await self._named_entity_recognition(chunk.content)
+                     │    │                         │     └ "{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0.1 What is an algorithm? \\nAn algorithm is an...
+                     │    │                         └ TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0....
+                     │    └ <function EntityRelationGraphBuilder._named_entity_recognition at 0x766af7716c00>
+                     └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x766af79ed6d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 171, in _named_entity_recognition
+    response = await self.llm.aask(ner_messages, format="json")
+                     │    │   │    └ 'Your task is to extract named entities from the given paragraph. \nRespond with a JSON list of entities.\n\nPlease reference...
+                     │    │   └ <function BaseLLM.aask at 0x766b25e7d440>
+                     │    └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x766b29035710>
+                     └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x766af79ed6d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/BaseLLM.py", line 146, in aask
+    rsp = await self.acompletion_text(message, stream=stream, timeout=self.get_timeout(timeout), max_tokens = max_tokens, format = format)
+                │    │                │               │               │    │           │                      │                    └ 'json'
+                │    │                │               │               │    │           │                      └ None
+                │    │                │               │               │    │           └ 0
+                │    │                │               │               │    └ <function BaseLLM.get_timeout at 0x766b25e7e160>
+                │    │                │               │               └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x766b29035710>
+                │    │                │               └ False
+                │    │                └ [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to extract named en...
+                │    └ <function OpenAILLM.acompletion_text at 0x766b25e7ee80>
+                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x766b29035710>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+                 │    │    │       └ {'stream': False, 'timeout': 600, 'max_tokens': None, 'format': 'json'}
+                 │    │    └ (<Core.Provider.OpenaiApi.OpenAILLM object at 0x766b29035710>, [{'role': 'system', 'content': 'You are a helpful assistant.'}...
+                 │    └ <function OpenAILLM.acompletion_text at 0x766b25e7ec00>
+                 └ <AsyncRetrying object at 0x766af781f650 (stop=<tenacity.stop.stop_after_attempt object at 0x766b25e52950>, wait=<tenacity.wai...
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+               │    │                └ <RetryCallState 130201778423952: attempt #6; slept for 20.08; last result: failed (PermissionDeniedError Error code: 403 - {'...
+               │    └ <function AsyncRetrying.iter at 0x766b26111b20>
+               └ <AsyncRetrying object at 0x766af781f650 (stop=<tenacity.stop.stop_after_attempt object at 0x766b25e52950>, wait=<tenacity.wai...
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 153, in iter
+    result = await action(retry_state)
+                   │      └ <RetryCallState 130201778423952: attempt #6; slept for 20.08; last result: failed (PermissionDeniedError Error code: 403 - {'...
+                   └ <function wrap_to_async_func.<locals>.inner at 0x766af7bf28e0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           │     │       └ {}
+           │     └ (<RetryCallState 130201778423952: attempt #6; slept for 20.08; last result: failed (PermissionDeniedError Error code: 403 - {...
+           └ <function log_and_reraise at 0x766b2613c220>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Common/Utils.py", line 319, in log_and_reraise
+    raise retry_state.outcome.exception()
+          │           │       └ <function Future.exception at 0x766cac3d0cc0>
+          │           └ <Future at 0x766af79ac0d0 state=finished raised PermissionDeniedError>
+          └ <RetryCallState 130201778423952: attempt #6; slept for 20.08; last result: failed (PermissionDeniedError Error code: 403 - {'...
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+                   │   │       └ {'stream': False, 'timeout': 600, 'max_tokens': None, 'format': 'json'}
+                   │   └ (<Core.Provider.OpenaiApi.OpenAILLM object at 0x766b29035710>, [{'role': 'system', 'content': 'You are a helpful assistant.'}...
+                   └ <function OpenAILLM.acompletion_text at 0x766b25e7ec00>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/OpenaiApi.py", line 157, in acompletion_text
+    rsp = await self._achat_completion(messages, timeout=self.get_timeout(timeout), max_tokens = max_tokens)
+                │    │                 │                 │    │           │                      └ None
+                │    │                 │                 │    │           └ 600
+                │    │                 │                 │    └ <function BaseLLM.get_timeout at 0x766b25e7e160>
+                │    │                 │                 └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x766b29035710>
+                │    │                 └ [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to extract named en...
+                │    └ <function OpenAILLM._achat_completion at 0x766b25e7e8e0>
+                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x766b29035710>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/OpenaiApi.py", line 138, in _achat_completion
+    rsp: ChatCompletion = await self.aclient.chat.completions.create(**kwargs)
+                                │    │       │    │           │        └ {'messages': [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to ext...
+                                │    │       │    │           └ <function AsyncCompletions.create at 0x766b262209a0>
+                                │    │       │    └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x766af43bfc90>
+                                │    │       └ <openai.resources.chat.chat.AsyncChat object at 0x766b25e508d0>
+                                │    └ <openai.AsyncOpenAI object at 0x766b27e9e890>
+                                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x766b29035710>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 1927, in create
+    return await self._post(
+                 │    └ <bound method AsyncAPIClient.post of <openai.AsyncOpenAI object at 0x766b27e9e890>>
+                 └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x766af43bfc90>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+                 │    │       │        │            │                  └ openai.AsyncStream[openai.types.chat.chat_completion_chunk.ChatCompletionChunk]
+                 │    │       │        │            └ False
+                 │    │       │        └ FinalRequestOptions(method='post', url='/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GIVEN, timeout=600,...
+                 │    │       └ <class 'openai.types.chat.chat_completion.ChatCompletion'>
+                 │    └ <function AsyncAPIClient.request at 0x766b26521120>
+                 └ <openai.AsyncOpenAI object at 0x766b27e9e890>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+                 │    └ <function AsyncAPIClient._request at 0x766b265211c0>
+                 └ <openai.AsyncOpenAI object at 0x766b27e9e890>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1562, in _request
+    raise self._make_status_error_from_response(err.response) from None
+          │    └ <function BaseClient._make_status_error_from_response at 0x766b265122a0>
+          └ <openai.AsyncOpenAI object at 0x766b27e9e890>
+
+openai.PermissionDeniedError: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}

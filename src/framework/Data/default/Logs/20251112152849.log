@@ -1,0 +1,321 @@
+2025-11-12 15:28:56.279 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-12 15:28:56.280 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-12 15:29:00.245 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-12 15:29:00.246 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-12 15:29:00.247 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-12 15:29:00.263 | INFO     | Core.Engine.GraphRAGEngine:process_documents:188 - 🚀 Starting document processing workflow
+2025-11-12 15:29:01.720 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 1.364(s), this was the 1st time calling it.
+2025-11-12 15:29:03.272 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 2.916(s), this was the 2nd time calling it.
+2025-11-12 15:29:05.917 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 5.562(s), this was the 3rd time calling it.
+2025-11-12 15:29:11.305 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 10.949(s), this was the 4th time calling it.
+2025-11-12 15:29:17.980 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 17.625(s), this was the 5th time calling it.
+2025-11-12 15:29:30.537 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 30.182(s), this was the 6th time calling it.
+2025-11-12 15:29:30.537 | ERROR    | Core.Common.Utils:log_and_reraise:312 - Retry attempts exhausted. Last exception: Connection error.
+2025-11-12 15:29:30.537 | WARNING  | Core.Common.Utils:log_and_reraise:313 - 
+Recommend going to https://deepwisdom.feishu.cn/wiki/MsGnwQBjiif9c3koSJNcYaoSnu4#part-XdatdVlhEojeAfxaaEZcMV3ZniQ
+See FAQ 5.8
+
+2025-11-12 15:29:30.537 | ERROR    | Core.Engine.GraphRAGEngine:process_documents:238 - ❌ Document processing failed: Connection error.
+2025-11-12 15:29:30.537 | ERROR    | __main__:main:243 - Application execution failed
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpx/_transports/default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpx/_transports/default.py", line 394, in handle_async_request
+    resp = await self._pool.handle_async_request(req)
+                 │    │     │                    └ <Request [b'POST']>
+                 │    │     └ <function AsyncConnectionPool.handle_async_request at 0x789ebbf0ae80>
+                 │    └ <AsyncConnectionPool [Requests: 0 active, 0 queued | Connections: 0 active, 0 idle]>
+                 └ <httpx.AsyncHTTPTransport object at 0x789ebc049190>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 256, in handle_async_request
+    raise exc from None
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpcore/_async/connection_pool.py", line 236, in handle_async_request
+    response = await connection.handle_async_request(
+                     │          └ <function AsyncHTTPConnection.handle_async_request at 0x789ebbf0a200>
+                     └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpcore/_async/connection.py", line 101, in handle_async_request
+    raise exc
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpcore/_async/connection.py", line 78, in handle_async_request
+    stream = await self._connect(request)
+                   │    │        └ <Request [b'POST']>
+                   │    └ <function AsyncHTTPConnection._connect at 0x789ebbf0a2a0>
+                   └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpcore/_async/connection.py", line 124, in _connect
+    stream = await self._network_backend.connect_tcp(**kwargs)
+                   │    │                │             └ {'host': '0.0.0.0', 'port': 8000, 'local_address': None, 'timeout': 600, 'socket_options': None}
+                   │    │                └ <function AutoBackend.connect_tcp at 0x789ebbf080e0>
+                   │    └ <httpcore._backends.auto.AutoBackend object at 0x789ebc30e0d0>
+                   └ <AsyncHTTPConnection [CONNECTION FAILED]>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpcore/_backends/auto.py", line 31, in connect_tcp
+    return await self._backend.connect_tcp(
+                 │    │        └ <function AnyIOBackend.connect_tcp at 0x789ebbf1de40>
+                 │    └ <httpcore.AnyIOBackend object at 0x789ea315c810>
+                 └ <httpcore._backends.auto.AutoBackend object at 0x789ebc30e0d0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpcore/_backends/anyio.py", line 113, in connect_tcp
+    with map_exceptions(exc_map):
+         │              └ {<class 'TimeoutError'>: <class 'httpcore.ConnectTimeout'>, <class 'OSError'>: <class 'httpcore.ConnectError'>, <class 'anyio...
+         └ <function map_exceptions at 0x789ebbe9c9a0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+    │    │   │     │    │      └ <traceback object at 0x789ea4070900>
+    │    │   │     │    └ OSError('All connection attempts failed')
+    │    │   │     └ <class 'OSError'>
+    │    │   └ <method 'throw' of 'generator' objects>
+    │    └ <generator object map_exceptions at 0x789ea3f64940>
+    └ <contextlib._GeneratorContextManager object at 0x789ea4073610>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpcore/_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+          └ <class 'httpcore.ConnectError'>
+
+httpcore.ConnectError: All connection attempts failed
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1500, in _request
+    response = await self._client.send(
+                     │    │       └ <function AsyncClient.send at 0x789ebdb84400>
+                     │    └ <openai._base_client.AsyncHttpxClientWrapper object at 0x789ec8152610>
+                     └ <openai.AsyncOpenAI object at 0x789ebc049b50>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpx/_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+                     │    └ <function AsyncClient._send_handling_auth at 0x789ebdb844a0>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x789ec8152610>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpx/_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+                     │    └ <function AsyncClient._send_handling_redirects at 0x789ebdb84540>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x789ec8152610>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpx/_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+                     │    │                    └ <Request('POST', 'http://0.0.0.0:8000/v1/chat/completions')>
+                     │    └ <function AsyncClient._send_single_request at 0x789ebdb845e0>
+                     └ <openai._base_client.AsyncHttpxClientWrapper object at 0x789ec8152610>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpx/_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+                     │         │                    └ <Request('POST', 'http://0.0.0.0:8000/v1/chat/completions')>
+                     │         └ <function AsyncHTTPTransport.handle_async_request at 0x789ebdb79080>
+                     └ <httpx.AsyncHTTPTransport object at 0x789ebc049190>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpx/_transports/default.py", line 393, in handle_async_request
+    with map_httpcore_exceptions():
+         └ <function map_httpcore_exceptions at 0x789ebdb78680>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/contextlib.py", line 158, in __exit__
+    self.gen.throw(typ, value, traceback)
+    │    │   │     │    │      └ <traceback object at 0x789ea4070800>
+    │    │   │     │    └ ConnectError(OSError('All connection attempts failed'))
+    │    │   │     └ <class 'httpcore.ConnectError'>
+    │    │   └ <method 'throw' of 'generator' objects>
+    │    └ <generator object map_httpcore_exceptions at 0x789ea3f67040>
+    └ <contextlib._GeneratorContextManager object at 0x789ea4072b90>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/httpx/_transports/default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+          │          └ 'All connection attempts failed'
+          └ <class 'httpx.ConnectError'>
+
+httpx.ConnectError: All connection attempts failed
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 252, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x789ebe089c60>
+    │       └ <function run at 0x78a0420f5ee0>
+    └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x789ebe2ef340>
+           │      └ <function Runner.run at 0x78a041b29620>
+           └ <asyncio.runners.Runner object at 0x78a041a09dd0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at /data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py:243> cb=[_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x78a041b231a0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x78a041a09dd0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x78a041b23100>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x78a041b28f40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x78a0420f6980>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+
+> File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 223, in main
+    await app.process_documents(force_rebuild=args.force_rebuild)
+          │   │                               │    └ False
+          │   │                               └ Namespace(opt='./Option/merged_config.yaml', dataset_name='GraphRAG-Bench', method='hippo_rag', force_rebuild=False, max_quer...
+          │   └ <function GraphRAGApplication.process_documents at 0x789ebe088360>
+          └ <__main__.GraphRAGApplication object at 0x789ec7c8e150>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 63, in process_documents
+    await self.engine.process_documents(corpus, force_rebuild=force_rebuild)
+          │    │      │                 │                     └ False
+          │    │      │                 └ [{'title': 'What is an algorithm? N/A N/A', 'content': '\n\nIntroduction \n0.1 What is an algorithm? \nAn algorithm is an exp...
+          │    │      └ <function GraphRAGEngine.process_documents at 0x789fe77894e0>
+          │    └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+          └ <__main__.GraphRAGApplication object at 0x789ec7c8e150>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 198, in process_documents
+    await self._execute_stage("graph_construction", chunks, force_rebuild)
+          │    │                                    │       └ False
+          │    │                                    └ [TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0...
+          │    └ <function GraphRAGEngine._execute_stage at 0x789fe7789580>
+          └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 246, in _execute_stage
+    await stage.execute(*args, **kwargs)
+          │     │        │       └ {}
+          │     │        └ ([TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n...
+          │     └ <function EntityRelationGraphBuilder.execute at 0x789ea3e62a20>
+          └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x789ea44425d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 95, in execute
+    self.graph = await self._build_graph(chunks)
+    │    │             │    │            └ [TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0...
+    │    │             │    └ <function EntityRelationGraphBuilder._build_graph at 0x789ea3e62ac0>
+    │    │             └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x789ea44425d0>
+    │    └ None
+    └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x789ea44425d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 107, in _build_graph
+    entities, relationships = await self._extract_entities_relations(chunk)
+                                    │    │                           └ TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0....
+                                    │    └ <function EntityRelationGraphBuilder._extract_entities_relations at 0x789ea3e62b60>
+                                    └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x789ea44425d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 135, in _extract_entities_relations
+    entities = await self._named_entity_recognition(chunk.content)
+                     │    │                         │     └ "{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0.1 What is an algorithm? \\nAn algorithm is an...
+                     │    │                         └ TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0....
+                     │    └ <function EntityRelationGraphBuilder._named_entity_recognition at 0x789ea3e62c00>
+                     └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x789ea44425d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 171, in _named_entity_recognition
+    response = await self.llm.aask(ner_messages, format="json")
+                     │    │   │    └ 'Your task is to extract named entities from the given paragraph. \nRespond with a JSON list of entities.\n\nPlease reference...
+                     │    │   └ <function BaseLLM.aask at 0x789ebc075440>
+                     │    └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x789ebc049490>
+                     └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x789ea44425d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/BaseLLM.py", line 146, in aask
+    rsp = await self.acompletion_text(message, stream=stream, timeout=self.get_timeout(timeout), max_tokens = max_tokens, format = format)
+                │    │                │               │               │    │           │                      │                    └ 'json'
+                │    │                │               │               │    │           │                      └ None
+                │    │                │               │               │    │           └ 0
+                │    │                │               │               │    └ <function BaseLLM.get_timeout at 0x789ebc076160>
+                │    │                │               │               └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x789ebc049490>
+                │    │                │               └ False
+                │    │                └ [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to extract named en...
+                │    └ <function OpenAILLM.acompletion_text at 0x789ebc076e80>
+                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x789ebc049490>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+                 │    │    │       └ {'stream': False, 'timeout': 600, 'max_tokens': None, 'format': 'json'}
+                 │    │    └ (<Core.Provider.OpenaiApi.OpenAILLM object at 0x789ebc049490>, [{'role': 'system', 'content': 'You are a helpful assistant.'}...
+                 │    └ <function OpenAILLM.acompletion_text at 0x789ebc076c00>
+                 └ <AsyncRetrying object at 0x789ea3e7f4d0 (stop=<tenacity.stop.stop_after_attempt object at 0x789ebe09c790>, wait=<tenacity.wai...
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+               │    │                └ <RetryCallState 132622751055696: attempt #6; slept for 21.59; last result: failed (APIConnectionError Connection error.)>
+               │    └ <function AsyncRetrying.iter at 0x789ebc309b20>
+               └ <AsyncRetrying object at 0x789ea3e7f4d0 (stop=<tenacity.stop.stop_after_attempt object at 0x789ebe09c790>, wait=<tenacity.wai...
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 153, in iter
+    result = await action(retry_state)
+                   │      └ <RetryCallState 132622751055696: attempt #6; slept for 21.59; last result: failed (APIConnectionError Connection error.)>
+                   └ <function wrap_to_async_func.<locals>.inner at 0x789ea4113a60>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           │     │       └ {}
+           │     └ (<RetryCallState 132622751055696: attempt #6; slept for 21.59; last result: failed (APIConnectionError Connection error.)>,)
+           └ <function log_and_reraise at 0x789ebc334220>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Common/Utils.py", line 319, in log_and_reraise
+    raise retry_state.outcome.exception()
+          │           │       └ <function Future.exception at 0x78a042200cc0>
+          │           └ <Future at 0x789ea4070410 state=finished raised APIConnectionError>
+          └ <RetryCallState 132622751055696: attempt #6; slept for 21.59; last result: failed (APIConnectionError Connection error.)>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+                   │   │       └ {'stream': False, 'timeout': 600, 'max_tokens': None, 'format': 'json'}
+                   │   └ (<Core.Provider.OpenaiApi.OpenAILLM object at 0x789ebc049490>, [{'role': 'system', 'content': 'You are a helpful assistant.'}...
+                   └ <function OpenAILLM.acompletion_text at 0x789ebc076c00>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/OpenaiApi.py", line 157, in acompletion_text
+    rsp = await self._achat_completion(messages, timeout=self.get_timeout(timeout), max_tokens = max_tokens)
+                │    │                 │                 │    │           │                      └ None
+                │    │                 │                 │    │           └ 600
+                │    │                 │                 │    └ <function BaseLLM.get_timeout at 0x789ebc076160>
+                │    │                 │                 └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x789ebc049490>
+                │    │                 └ [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to extract named en...
+                │    └ <function OpenAILLM._achat_completion at 0x789ebc0768e0>
+                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x789ebc049490>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/OpenaiApi.py", line 138, in _achat_completion
+    rsp: ChatCompletion = await self.aclient.chat.completions.create(**kwargs)
+                                │    │       │    │           │        └ {'messages': [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to ext...
+                                │    │       │    │           └ <function AsyncCompletions.create at 0x789ebc4189a0>
+                                │    │       │    └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x789ea3e7f150>
+                                │    │       └ <openai.resources.chat.chat.AsyncChat object at 0x789ebc1dad90>
+                                │    └ <openai.AsyncOpenAI object at 0x789ebc049b50>
+                                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x789ebc049490>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 1927, in create
+    return await self._post(
+                 │    └ <bound method AsyncAPIClient.post of <openai.AsyncOpenAI object at 0x789ebc049b50>>
+                 └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x789ea3e7f150>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+                 │    │       │        │            │                  └ openai.AsyncStream[openai.types.chat.chat_completion_chunk.ChatCompletionChunk]
+                 │    │       │        │            └ False
+                 │    │       │        └ FinalRequestOptions(method='post', url='/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GIVEN, timeout=600,...
+                 │    │       └ <class 'openai.types.chat.chat_completion.ChatCompletion'>
+                 │    └ <function AsyncAPIClient.request at 0x789ebc719120>
+                 └ <openai.AsyncOpenAI object at 0x789ebc049b50>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+                 │    └ <function AsyncAPIClient._request at 0x789ebc7191c0>
+                 └ <openai.AsyncOpenAI object at 0x789ebc049b50>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1524, in _request
+    return await self._retry_request(
+                 │    └ <function AsyncAPIClient._retry_request at 0x789ebc719260>
+                 └ <openai.AsyncOpenAI object at 0x789ebc049b50>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in _retry_request
+    return await self._request(
+                 │    └ <function AsyncAPIClient._request at 0x789ebc7191c0>
+                 └ <openai.AsyncOpenAI object at 0x789ebc049b50>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1524, in _request
+    return await self._retry_request(
+                 │    └ <function AsyncAPIClient._retry_request at 0x789ebc719260>
+                 └ <openai.AsyncOpenAI object at 0x789ebc049b50>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1594, in _retry_request
+    return await self._request(
+                 │    └ <function AsyncAPIClient._request at 0x789ebc7191c0>
+                 └ <openai.AsyncOpenAI object at 0x789ebc049b50>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1534, in _request
+    raise APIConnectionError(request=request) from err
+          │                          └ <Request('POST', 'http://0.0.0.0:8000/v1/chat/completions')>
+          └ <class 'openai.APIConnectionError'>
+
+openai.APIConnectionError: Connection error.
