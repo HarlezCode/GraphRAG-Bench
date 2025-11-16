@@ -5,6 +5,7 @@ Adopts new architecture design providing better modularity and extensibility
 import argparse
 import asyncio
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "3"
 import sys
 from pathlib import Path
 from typing import List, Dict, Any

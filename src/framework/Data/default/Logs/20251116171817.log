@@ -1,0 +1,6 @@
+2025-11-16 17:18:25.364 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 17:18:25.365 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 17:18:29.316 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 17:18:29.317 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 17:18:29.318 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 17:18:29.630 | INFO     | Core.Engine.GraphRAGEngine:process_documents:190 - 🚀 Starting document processing workflow

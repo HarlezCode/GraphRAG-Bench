@@ -1,0 +1,93 @@
+2025-11-16 19:08:52.964 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 19:08:52.965 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 19:08:56.985 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 19:08:56.986 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 19:08:57.000 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 19:08:57.000 | ERROR    | __main__:main:244 - Application execution failed
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 253, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7a64d5213920>
+    │       └ <function run at 0x7a665979dee0>
+    └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x7a64d5330590>
+           │      └ <function Runner.run at 0x7a6659651620>
+           └ <asyncio.runners.Runner object at 0x7a6609511e10>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at /data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py:244> cb=[_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7a665964f1a0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7a6609511e10>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7a665964f100>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7a6659650f40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7a665979e980>
+    └ <Handle <TaskStepMethWrapper object at 0x7a64d51ef970>()>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x7a64d51ef970>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x7a64d51ef970>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x7a64d51ef970>()>
+
+> File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 217, in main
+    app.initialize()
+    │   └ <function GraphRAGApplication.initialize at 0x7a64d5211f80>
+    └ <__main__.GraphRAGApplication object at 0x7a64d5a34f50>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 49, in initialize
+    self.query_dataset = RAGQueryDataset(
+    │    │               └ <class 'Data.QueryDataset.RAGQueryDataset'>
+    │    └ None
+    └ <__main__.GraphRAGApplication object at 0x7a64d5a34f50>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Data/QueryDataset.py", line 37, in __init__
+    self.dataset = pd.read_json(self.qa_path, lines=True, orient="records")
+    │              │  │         │    └ './Data/GraphRAG-bench/Question.jsonl'
+    │              │  │         └ <Data.QueryDataset.RAGQueryDataset object at 0x7a64a79c2590>
+    │              │  └ <function read_json at 0x7a660e9a1760>
+    │              └ <module 'pandas' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/pandas/__init__.py'>
+    └ <Data.QueryDataset.RAGQueryDataset object at 0x7a64a79c2590>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/pandas/io/json/_json.py", line 815, in read_json
+    return json_reader.read()
+           │           └ <function JsonReader.read at 0x7a660e9a1d00>
+           └ <pandas.io.json._json.JsonReader object at 0x7a64a7da37d0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/pandas/io/json/_json.py", line 1023, in read
+    obj = self._get_object_parser(self._combine_lines(data_lines))
+          │    │                  │    │              └ ['./Data/GraphRAG-bench/Question.jsonl']
+          │    │                  │    └ <function JsonReader._combine_lines at 0x7a660e9a19e0>
+          │    │                  └ <pandas.io.json._json.JsonReader object at 0x7a64a7da37d0>
+          │    └ <function JsonReader._get_object_parser at 0x7a660e9a1da0>
+          └ <pandas.io.json._json.JsonReader object at 0x7a64a7da37d0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/pandas/io/json/_json.py", line 1051, in _get_object_parser
+    obj = FrameParser(json, **kwargs).parse()
+          │           │       └ {'orient': 'records', 'dtype': True, 'convert_axes': True, 'convert_dates': True, 'keep_default_dates': True, 'precise_float'...
+          │           └ '[./Data/GraphRAG-bench/Question.jsonl]'
+          └ <class 'pandas.io.json._json.FrameParser'>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/pandas/io/json/_json.py", line 1187, in parse
+    self._parse()
+    │    └ <function FrameParser._parse at 0x7a660e9a2ac0>
+    └ <pandas.io.json._json.FrameParser object at 0x7a64a7d9ab10>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/pandas/io/json/_json.py", line 1430, in _parse
+    ujson_loads(json, precise_float=self.precise_float), dtype=None
+    │           │                   │    └ False
+    │           │                   └ <pandas.io.json._json.FrameParser object at 0x7a64a7d9ab10>
+    │           └ '[./Data/GraphRAG-bench/Question.jsonl]'
+    └ <built-in function ujson_loads>
+
+ValueError: Expected object or value

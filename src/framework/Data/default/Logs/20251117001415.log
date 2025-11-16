@@ -1,0 +1,48 @@
+2025-11-17 00:14:23.456 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-17 00:14:23.457 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-17 00:14:27.459 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-17 00:14:27.460 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-17 00:14:27.461 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-17 00:14:27.776 | INFO     | Core.Engine.GraphRAGEngine:process_documents:190 - 🚀 Starting document processing workflow
+2025-11-17 00:14:29.487 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-17 00:14:30.205 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting property name enclosed in double quotes: line 1 column 3 (char 2). Attempted string: { B E E R }...
+2025-11-17 00:14:30.205 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:14:38.951 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 2914 (char 2913). Attempted string: {
+    "triples": [
+        {"subject": "Introducti...
+2025-11-17 00:14:38.951 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:15:12.609 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:15:12.613 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:15:14.054 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:15:14.622 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:15:18.082 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Unterminated string starting at: line 1 column 1000 (char 999). Attempted string: {
+    "triples": [
+        {"subject": "Recursion"...
+2025-11-17 00:15:18.082 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:15:28.916 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ',' delimiter: line 1 column 4791 (char 4790). Attempted string: {
+    "triples": [
+        {"subject": "Tower of H...
+2025-11-17 00:15:28.917 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:15:58.261 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:16:38.779 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-17 00:16:38.779 | INFO     | Core.Storage.NetworkXStorage:_persist:164 - Writing graph to ./Data/GraphRAG-Bench2/er_graph/graph_nx_data.graphml
+2025-11-17 00:16:38.780 | INFO     | Core.Storage.NetworkXStorage:_write_nx_graph:86 - Writing graph with 135 nodes, 95 edges
+2025-11-17 00:16:38.784 | INFO     | Core.Graph.GraphBuilderFactory:_save_graph_to_cache:89 - Saved graph to cache: ./Data/GraphRAG-Bench2/er_graph/graph_nx_data.graphml
+2025-11-17 00:16:38.786 | WARNING  | Core.Indexing.IndexManagerFactory:_load_index:288 - Failed to load index: 'utf-8' codec can't decode byte 0xef in position 51: invalid continuation byte
+2025-11-17 00:16:39.247 | INFO     | Core.Engine.GraphRAGEngine:_build_retriever_context:270 - 🔧 Building retrieval context
+2025-11-17 00:16:39.255 | INFO     | Core.Engine.GraphRAGEngine:process_documents:238 - ✅ Document processing workflow completed
+2025-11-17 00:16:39.255 | INFO     | Core.Engine.GraphRAGEngine:execute_query:570 - 🔍 Executing query: If the search space contains very deep branches wi...
+2025-11-17 00:16:39.385 | WARNING  | Core.Retriever.BaseRetriever:_validate_input:247 - node_datas is empty
+2025-11-17 00:16:43.721 | INFO     | Core.Engine.GraphRAGEngine:execute_query:575 - ✅ Query execution completed
+2025-11-17 00:16:43.722 | INFO     | Core.Engine.GraphRAGEngine:execute_query:570 - 🔍 Executing query: Depth-ﬁrst search always expands at least as many ...
+2025-11-17 00:16:43.978 | WARNING  | Core.Retriever.BaseRetriever:_initialize_entity_chunk_count:185 - Entity-relationship matrices not available, skipping entity-chunk count initialization
+2025-11-17 00:16:45.422 | INFO     | Core.Engine.GraphRAGEngine:execute_query:575 - ✅ Query execution completed
+2025-11-17 00:16:45.423 | INFO     | Core.Engine.GraphRAGEngine:execute_query:570 - 🔍 Executing query: h(n)=0 is an admissible heuristic for the 8-puzzle...
+2025-11-17 00:16:45.539 | WARNING  | Core.Retriever.BaseRetriever:_validate_input:247 - node_datas is empty
+2025-11-17 00:16:49.279 | INFO     | Core.Engine.GraphRAGEngine:execute_query:575 - ✅ Query execution completed
+2025-11-17 00:16:49.280 | INFO     | Core.Engine.GraphRAGEngine:execute_query:570 - 🔍 Executing query: Breadth-ﬁrst search is complete even if zero step ...
+2025-11-17 00:16:49.398 | WARNING  | Core.Retriever.BaseRetriever:_validate_input:247 - node_datas is emptys
+2025-11-17 00:16:52.489 | INFO     | Core.Engine.GraphRAGEngine:execute_query:575 - ✅ Query execution completed
+2025-11-17 00:16:52.490 | INFO     | Core.Engine.GraphRAGEngine:execute_query:570 - 🔍 Executing query: Assume that a rook can move on a chessboard any nu...
+2025-11-17 00:16:52.610 | WARNING  | Core.Retriever.BaseRetriever:_validate_input:247 - node_datas is empty
+2025-11-17 00:16:55.718 | INFO     | Core.Engine.GraphRAGEngine:execute_query:575 - ✅ Query execution completed

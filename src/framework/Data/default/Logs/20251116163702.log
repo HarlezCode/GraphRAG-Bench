@@ -1,0 +1,325 @@
+2025-11-16 16:37:10.230 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 16:37:10.231 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 16:37:14.175 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 16:37:14.176 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 16:37:14.177 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 16:37:14.485 | INFO     | Core.Engine.GraphRAGEngine:process_documents:188 - 🚀 Starting document processing workflow
+2025-11-16 16:37:24.371 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 115 (char 114). Attempted string: {
+  "named_entities": [
+    "Multiplication",
+    ...
+2025-11-16 16:37:24.372 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:37:24.543 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ',' delimiter: line 1 column 1206 (char 1205). Attempted string: {
+  "named_entities": ["Introduction: Analyzing Al...
+2025-11-16 16:37:24.544 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:37:42.811 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:37:42.814 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:37:42.818 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:37:43.256 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:37:43.545 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:37:43.943 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:37:47.738 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:02.449 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:02.452 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:17.084 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Unterminated string starting at: line 1 column 67 (char 66). Attempted string: {
+  "named_entities": [
+    "Introduction: Exercis...
+2025-11-16 16:38:17.086 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:30.089 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:30.094 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:30.098 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:30.101 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:30.103 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:30.107 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:30.111 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:30.744 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:31.925 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:32.018 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 818 (char 817). Attempted string: {
+  "triples": [
+    ["Recursion", "is about", "al...
+2025-11-16 16:38:32.018 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:42.641 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:52.957 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:52.960 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:52.964 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:52.968 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:38:52.971 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:01.987 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Unterminated string starting at: line 1 column 103 (char 102). Attempted string: {
+  "named_entities": [
+    "Recursion",
+    "♥Lin...
+2025-11-16 16:39:01.988 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:20.075 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:20.079 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:20.084 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:20.089 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:20.092 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:20.100 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:20.103 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:25.668 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:43.342 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:43.345 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:43.347 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:43.350 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:43.352 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:39:43.355 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:07.849 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:07.853 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:07.856 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:07.860 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:07.864 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:07.866 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:07.870 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:08.951 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:31.755 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:31.760 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:31.763 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:31.767 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:31.770 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:31.773 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:31.776 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:58.550 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:58.555 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:58.559 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:58.561 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:58.563 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:58.566 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:59.203 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:59.444 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:40:59.471 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:19.747 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:19.751 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:19.756 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:19.760 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:26.587 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 16:41:48.669 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:48.672 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:48.676 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:48.679 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:48.681 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:49.313 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:41:50.429 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:11.338 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:11.343 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:11.346 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:11.350 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:11.354 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:31.246 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 3250 (char 3249). Attempted string: {
+  "named_entities": [
+    "Basic Graph Algorithm...
+2025-11-16 16:42:31.247 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:59.569 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:59.573 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:59.578 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:59.580 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:59.583 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:42:59.586 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:00.531 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 3261 (char 3260). Attempted string: {
+  "triples": [
+    ["Basic Graph Algorithms", "i...
+2025-11-16 16:43:00.533 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:00.718 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:00.840 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:21.491 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:21.495 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:21.498 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:21.502 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:30.476 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 497 (char 496). Attempted string: {
+  "triples": [
+    ["Basic Graph Algorithms", "t...
+2025-11-16 16:43:30.477 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:30.714 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 671 (char 670). Attempted string: {
+  "named_entities": [
+    "Basic Graph Algorithm...
+2025-11-16 16:43:30.715 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:41.572 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 978 (char 977). Attempted string: {
+  "triples": [
+    ["Basic Graph Algorithms: Imp...
+2025-11-16 16:43:41.573 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:47.314 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:47.321 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:47.324 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:47.329 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:47.333 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:47.335 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:48.103 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:48.429 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:53.772 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 2123 (char 2122). Attempted string: {
+  "triples": [
+    ["Basic Graph Algorithms", "i...
+2025-11-16 16:43:53.773 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:43:56.096 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 621 (char 620). Attempted string: {
+  "triples": [
+    ["Basic Graph Algorithms: Wha...
+2025-11-16 16:43:56.097 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:44:07.701 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:44:07.705 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:01.923 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:01.928 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:01.932 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:01.937 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:01.941 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:03.126 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:03.346 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:03.423 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:54.723 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:54.727 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:54.731 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:54.734 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:45:54.737 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:19.605 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:19.608 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:19.610 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:19.612 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:19.618 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:19.621 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:20.343 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:21.936 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:27.178 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 5092 (char 5091). Attempted string: {
+  "triples": [
+    ["Shortest Paths", "is a", "b...
+2025-11-16 16:46:27.179 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:29.324 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 454 (char 453). Attempted string: {
+    "triples": [
+        ["Shortest Paths", "is ...
+2025-11-16 16:46:29.325 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:42.079 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:42.082 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:42.085 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:46:42.088 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:31.274 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:31.279 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:31.281 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:31.283 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:31.287 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:31.292 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:31.297 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:31.301 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:47:53.862 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 4133 (char 4132). Attempted string: {
+  "triples": [
+    ["Shortest Paths", "title", "...
+2025-11-16 16:47:53.862 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:21.489 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:21.493 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:21.496 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:21.499 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:21.501 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:21.504 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:36.051 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting property name enclosed in double quotes: line 1 column 3 (char 2). Attempted string: { R }...
+2025-11-16 16:48:36.052 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:46.366 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:46.372 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:46.375 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:46.378 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:46.381 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:46.383 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:48:46.389 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:06.476 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 2623 (char 2622). Attempted string: {
+    "triples": [
+        ["Maximum Flows & Minim...
+2025-11-16 16:49:06.477 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:10.287 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:10.291 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:10.295 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:10.298 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:10.301 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:10.303 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:13.210 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 16:49:26.926 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ',' delimiter: line 1 column 972 (char 971). Attempted string: {
+  "triples": [
+    ["Maximum Flows & Minimum Cut...
+2025-11-16 16:49:26.927 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:48.874 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:48.876 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:48.878 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:48.880 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:48.882 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:48.886 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:48.889 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:49.879 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:49:58.736 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 1002 (char 1001). Attempted string: {
+    "triples": [
+        ["Applications of Flows...
+2025-11-16 16:49:58.737 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:50:27.182 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:50:27.186 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:50:27.189 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:50:27.192 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:50:27.195 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:50:27.199 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.498 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.502 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.508 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.513 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.515 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.518 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.521 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.526 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:12.529 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:13.985 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:37.095 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:37.099 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:37.101 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:37.103 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:37.105 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:37.107 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:51:37.110 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:04.649 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:04.654 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:04.659 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:04.663 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:04.667 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:04.673 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:04.676 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:04.679 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:06.414 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:06.491 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:27.863 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:27.866 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:27.868 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:27.870 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:27.872 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:52:27.875 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:25.950 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:25.956 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:25.960 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:25.965 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:25.972 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:25.979 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:29.569 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:55.479 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:55.483 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:55.488 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:55.491 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:53:55.495 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:54:54.584 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:54:54.588 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:54:54.592 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:54:54.596 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:54:54.600 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:54:56.613 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:55:51.157 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:55:51.160 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:55:51.164 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:55:51.167 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:56:17.562 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Unterminated string starting at: line 1 column 142 (char 141). Attempted string: {
+  "triples": [
+    ["Problem-solving", "title", ...
+2025-11-16 16:56:17.563 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:56:39.731 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:56:39.737 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:56:39.740 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 16:56:39.744 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:56:39.748 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:56:39.751 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:56:39.754 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:57:03.335 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Unterminated string starting at: line 1 column 115 (char 114). Attempted string: {
+  "triples": [
+    ["II", "title", "Problem-solv...
+2025-11-16 16:57:03.336 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:57:33.861 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:57:36.360 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:57:36.364 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:57:36.368 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:57:36.371 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 16:57:36.374 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.

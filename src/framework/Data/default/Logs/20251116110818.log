@@ -1,0 +1,20 @@
+2025-11-16 11:08:25.630 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 11:08:25.631 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 11:08:29.573 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 11:08:29.574 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 11:08:29.575 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 11:08:29.884 | INFO     | Core.Engine.GraphRAGEngine:process_documents:188 - 🚀 Starting document processing workflow
+2025-11-16 11:08:53.490 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:09:14.382 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:09:34.617 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:09:55.239 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:10:15.572 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:10:20.353 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 117 (char 116). Attempted string: {
+  "named_entities": [
+    "Introduction: Multipl...
+2025-11-16 11:10:20.353 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:10:40.575 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:11:01.012 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:11:21.167 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:11:41.366 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 11:12:01.648 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.

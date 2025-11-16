@@ -1,0 +1,86 @@
+2025-11-16 17:03:24.992 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 17:03:24.993 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 17:03:28.979 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 17:03:28.980 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 17:03:28.981 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 17:03:29.294 | INFO     | Core.Engine.GraphRAGEngine:process_documents:190 - 🚀 Starting document processing workflow
+2025-11-16 17:03:36.007 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 115 (char 114). Attempted string: {
+  "named_entities": [
+    "Multiplication",
+    ...
+2025-11-16 17:03:36.008 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:03:36.179 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ',' delimiter: line 1 column 1206 (char 1205). Attempted string: {
+  "named_entities": ["Introduction: Analyzing Al...
+2025-11-16 17:03:36.179 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:03:54.178 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:03:54.182 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:03:54.185 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:03:54.621 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:03:54.908 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:03:55.304 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:03:59.060 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:04:13.719 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:04:13.722 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:04:13.723 | ERROR    | Core.Engine.GraphRAGEngine:process_documents:242 - ❌ Document processing failed: module 'networkx' has no attribute 'write_gpickle'
+2025-11-16 17:04:13.723 | ERROR    | __main__:main:244 - Application execution failed
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 253, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7578f0a1bb00>
+    │       └ <function run at 0x757a74f99ee0>
+    └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x7578f0b346a0>
+           │      └ <function Runner.run at 0x757a74e4d620>
+           └ <asyncio.runners.Runner object at 0x757a709e5ed0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at /data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py:244> cb=[_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x757a74e4b1a0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x757a709e5ed0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x757a74e4b100>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x757a74e4cf40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x757a74f9a980>
+    └ <Handle Task.task_wakeup(<_GatheringFu....], []), ...]>)>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<_GatheringFu....], []), ...]>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<_GatheringFu....], []), ...]>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<_GatheringFu....], []), ...]>)>
+
+> File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 224, in main
+    await app.process_documents(force_rebuild=args.force_rebuild)
+          │   │                               │    └ False
+          │   │                               └ Namespace(opt='Option/merged_config.yaml', dataset_name='GraphRAG-Bench', method='hippo_rag', force_rebuild=False, max_querie...
+          │   └ <function GraphRAGApplication.process_documents at 0x7578f0a1a200>
+          └ <__main__.GraphRAGApplication object at 0x7578f1df7b90>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 64, in process_documents
+    await self.engine.process_documents(corpus, force_rebuild=force_rebuild)
+          │    │      │                 │                     └ False
+          │    │      │                 └ [{'title': 'Introduction: What is an algorithm?, N/A, N/A', 'content': '\n\nIntroduction \n0.1 What is an algorithm? \nAn alg...
+          │    │      └ <function GraphRAGEngine.process_documents at 0x757a1959a8e0>
+          │    └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+          └ <__main__.GraphRAGApplication object at 0x7578f1df7b90>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 207, in process_documents
+    nx.write_gpickle(graph, "./new_graph.gpickle")
+    │                └ <networkx.classes.graph.Graph object at 0x7578d363c9d0>
+    └ <module 'networkx' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/networkx/__init__.py'>
+
+AttributeError: module 'networkx' has no attribute 'write_gpickle'

@@ -1,0 +1,9 @@
+2025-11-16 10:04:08.106 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 10:04:08.107 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 10:04:11.729 | WARNING  | Core.Indexing.IndexManagerFactory:create_manager:437 - Failed to create embedding model: CUDA out of memory. Tried to allocate 978.00 MiB. GPU 0 has a total capacity of 23.64 GiB of which 432.62 MiB is free. Process 2427975 has 22.78 GiB memory in use. Including non-PyTorch memory, this process has 384.00 MiB memory in use. Of the allocated memory 0 bytes is allocated by PyTorch, and 0 bytes is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-11-16 10:04:11.856 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 10:04:11.857 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 10:04:11.858 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 10:04:11.873 | INFO     | Core.Engine.GraphRAGEngine:process_documents:188 - 🚀 Starting document processing workflow
+2025-11-16 10:04:28.340 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 10:04:46.093 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.

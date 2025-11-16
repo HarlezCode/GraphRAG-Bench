@@ -3,33 +3,23 @@
 
 # Global default configuration
 llm:
-  api_type: "openai" # or openai
-  model: "gpt-4o-mini"
+  api_type: "open_llm" # or openai
+  model: "Qwen/Qwen2.5-3B-Instruct"
   api_key: "YOUR_OPENAI_API_KEY"
+  # base_url: 'http://0.0.0.0:8000/v1'
+  base_url: 'http://143.89.191.47:8000/v1'
 #  api_type: "open_llm" # or openai
 #  base_url: 'http://0.0.0.0:8000/v1'
 #  model: "meta-llama/Meta-Llama-3-8B"
 #  api_key: "ANY_THING_IS_OKAY"
 
-# llm:
-#  api_type: "openai"
-#  base_url: "https://ai.megallm.io/v1"
-#  model: "openai-gpt-oss-20b"
-#  api_key: "sk-mega-f110024fb04b74d2642de3939f14c504ff67305df9273db3f8a7579e8b6a38c4"
-
-llm:
-  api_type: "open_llm" # or openai
-  model: "Qwen/Qwen2.5-1.5B-Instruct"
-  api_key: "YOUR_OPENAI_API_KEY"
-  base_url: 'http://0.0.0.0:8000/v1'
-
 embedding:
   api_type: "hf"  # or  ollama / openai.
   # base_url: "https://cfcus02.opapi.win/v1"  # or forward url / other llm url
-  api_key: "YOUR_HUGGINGFACE_API_KEY"
+  api_key: "aaaa"
   model: "BAAI/bge-m3"  #BAAI/bge-m3
 #  model: "sentence-transformers/all-MiniLM-L6-v2"
-  cache_dir: ""
+  cache_dir: "./Data"
   dimensions: 1024
   max_token_size: 8102
   embed_batch_size: 128
@@ -62,7 +52,7 @@ methods:
 
     # Chunk Config 
     chunk:
-      chunk_token_size: 1200
+      chunk_token_size: 20000
       chunk_overlap_token_size: 100
       token_model: gpt-3.5-turbo
       chunk_method: chunking_by_token_size
@@ -192,7 +182,7 @@ methods:
     graph:
       enable_edge_keywords: True
       graph_type: er_graph # rkg_graph/er_graph/tree_graph/passage_graph
-      force: False
+      force: True
       # Building graph
       extract_two_step: True
       max_gleaning: 1

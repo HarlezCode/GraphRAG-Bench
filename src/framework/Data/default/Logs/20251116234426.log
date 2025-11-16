@@ -1,0 +1,20 @@
+2025-11-16 23:44:34.474 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 23:44:34.475 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 23:44:38.430 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 23:44:38.431 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 23:44:38.432 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 23:44:38.745 | INFO     | Core.Engine.GraphRAGEngine:process_documents:190 - 🚀 Starting document processing workflow
+2025-11-16 23:45:16.522 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 23:45:17.614 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 23:45:23.908 | INFO     | Core.Storage.NetworkXStorage:_persist:164 - Writing graph to ./Data/GraphRAG-Bench2/er_graph/graph_nx_data.graphml
+2025-11-16 23:45:23.908 | INFO     | Core.Storage.NetworkXStorage:_write_nx_graph:86 - Writing graph with 43 nodes, 30 edges
+2025-11-16 23:45:23.910 | INFO     | Core.Graph.GraphBuilderFactory:_save_graph_to_cache:89 - Saved graph to cache: ./Data/GraphRAG-Bench2/er_graph/graph_nx_data.graphml
+2025-11-16 23:45:23.911 | WARNING  | Core.Indexing.IndexManagerFactory:_load_index:288 - Failed to load index: 'utf-8' codec can't decode byte 0xef in position 51: invalid continuation byte
+2025-11-16 23:45:24.114 | INFO     | Core.Engine.GraphRAGEngine:_build_retriever_context:270 - 🔧 Building retrieval context
+2025-11-16 23:45:24.122 | INFO     | Core.Engine.GraphRAGEngine:process_documents:238 - ✅ Document processing workflow completed
+2025-11-16 23:45:24.123 | INFO     | Core.Engine.GraphRAGEngine:execute_query:570 - 🔍 Executing query: If the search space contains very deep branches wi...
+2025-11-16 23:45:24.226 | WARNING  | Core.Retriever.BaseRetriever:_validate_input:247 - node_datas is empty
+2025-11-16 23:45:28.214 | INFO     | Core.Engine.GraphRAGEngine:execute_query:575 - ✅ Query execution completed
+2025-11-16 23:45:28.214 | INFO     | Core.Engine.GraphRAGEngine:execute_query:570 - 🔍 Executing query: Depth-ﬁrst search always expands at least as many ...
+2025-11-16 23:45:28.442 | WARNING  | Core.Retriever.BaseRetriever:_initialize_entity_chunk_count:185 - Entity-relationship matrices not available, skipping entity-chunk count initialization
+2025-11-16 23:45:29.364 | INFO     | Core.Engine.GraphRAGEngine:execute_query:575 - ✅ Query execution completed

@@ -1,0 +1,1220 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d11" for="edge" attr.name="rank" attr.type="long" />
+  <key id="d10" for="edge" attr.name="keywords" attr.type="string" />
+  <key id="d9" for="edge" attr.name="description" attr.type="string" />
+  <key id="d8" for="edge" attr.name="weight" attr.type="double" />
+  <key id="d7" for="edge" attr.name="relation_name" attr.type="string" />
+  <key id="d6" for="edge" attr.name="source_id" attr.type="string" />
+  <key id="d5" for="edge" attr.name="tgt_id" attr.type="string" />
+  <key id="d4" for="edge" attr.name="src_id" attr.type="string" />
+  <key id="d3" for="node" attr.name="description" attr.type="string" />
+  <key id="d2" for="node" attr.name="entity_type" attr.type="string" />
+  <key id="d1" for="node" attr.name="source_id" attr.type="string" />
+  <key id="d0" for="node" attr.name="entity_name" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="[">
+      <data key="d0">[</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="&quot;">
+      <data key="d0">"</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="I">
+      <data key="d0">I</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="n">
+      <data key="d0">n</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="t">
+      <data key="d0">t</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="r">
+      <data key="d0">r</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="o">
+      <data key="d0">o</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="d">
+      <data key="d0">d</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="u">
+      <data key="d0">u</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="c">
+      <data key="d0">c</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="i">
+      <data key="d0">i</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Multiplication">
+      <data key="d0">Multiplication</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Lattice Multiplication">
+      <data key="d0">Lattice Multiplication</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="N/A">
+      <data key="d0">N/A</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="&#10;">
+      <data key="d0">
+</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id=" ">
+      <data key="d0"> </data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="M">
+      <data key="d0">M</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="l">
+      <data key="d0">l</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="p">
+      <data key="d0">p</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="a">
+      <data key="d0">a</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="a mathematical operation" />
+    <node id="two or more operands" />
+    <node id="result in a product" />
+    <node id="fundamental in arithmetic" />
+    <node id="used in various fields such as algebra, geometry, and physics" />
+    <node id="related to other mathematical operations like division and exponentiation" />
+    <node id="important in computer science for algorithms and data structures" />
+    <node id="Compass">
+      <data key="d0">Compass</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Straightedge">
+      <data key="d0">Straightedge</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Euclid’s Elements">
+      <data key="d0">Euclid’s Elements</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="RightAngle">
+      <data key="d0">RightAngle</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Line">
+      <data key="d0">Line</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Circle">
+      <data key="d0">Circle</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Triangle">
+      <data key="d0">Triangle</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Representatives">
+      <data key="d0">Representatives</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Direct Taxes">
+      <data key="d0">Direct Taxes</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="House of Representatives">
+      <data key="d0">House of Representatives</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="United States Constitution">
+      <data key="d0">United States Constitution</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Congressional Apportionment">
+      <data key="d0">Congressional Apportionment</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Huntington-Hill method">
+      <data key="d0">Huntington-Hill method</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Supreme Court challenge">
+      <data key="d0">Supreme Court challenge</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="United States House of Representatives">
+      <data key="d0">United States House of Representatives</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Joseph Hill">
+      <data key="d0">Joseph Hill</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Edward Huntington">
+      <data key="d0">Edward Huntington</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="2 U.S.C. §2a">
+      <data key="d0">2 U.S.C. §2a</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Supreme Court">
+      <data key="d0">Supreme Court</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="D'Hondt method">
+      <data key="d0">D'Hondt method</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Webster–Sainte-Laguë method">
+      <data key="d0">Webster–Sainte-Laguë method</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Martin’s algorithm">
+      <data key="d0">Martin’s algorithm</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="million dollars">
+      <data key="d0">million dollars</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="taxes">
+      <data key="d0">taxes</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="tax man">
+      <data key="d0">tax man</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="millionaire">
+      <data key="d0">millionaire</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="New York City real-estate hustlers">
+      <data key="d0">New York City real-estate hustlers</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Silicon Valley venture capitalists">
+      <data key="d0">Silicon Valley venture capitalists</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="billionaire CEOs">
+      <data key="d0">billionaire CEOs</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="poor slobs">
+      <data key="d0">poor slobs</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="'">
+      <data key="d0">'</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="s">
+      <data key="d0">s</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="g">
+      <data key="d0">g</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="h">
+      <data key="d0">h</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="m">
+      <data key="d0">m</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Introduction: Describing Algorithms, Specifying the Problem, N/A">
+      <data key="d0">Introduction: Describing Algorithms, Specifying the Problem, N/A</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="I cannot emphasize this point enough">
+      <data key="d0">I cannot emphasize this point enough</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Your primary job as an algorithm designer is teaching other people how and why your algorithms work">
+      <data key="d0">Your primary job as an algorithm designer is teaching other people how and why your algorithms work</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="If you can’t communicate your ideas to other human beings, they may as well not exist">
+      <data key="d0">If you can’t communicate your ideas to other human beings, they may as well not exist</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Producing correct and efficient executable code is an important but secondary goal">
+      <data key="d0">Producing correct and efficient executable code is an important but secondary goal</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Convincing yourself, your professors, your (prospective) employers, your colleagues, or your students that you are smart is at best a distant third">
+      <data key="d0">Convincing yourself, your professors, your (prospective) employers, your colleagues, or your students that you are smart is at best a distant third</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Specifying the Problem">
+      <data key="d0">Specifying the Problem</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Before we can even start developing a new algorithm, we have to agree on what problem our algorithm is supposed to solve">
+      <data key="d0">Before we can even start developing a new algorithm, we have to agree on what problem our algorithm is supposed to solve</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Algorithmic problems are often presented using standard English, in terms of real-world objects">
+      <data key="d0">Algorithmic problems are often presented using standard English, in terms of real-world objects</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="It’s up to us, the algorithm designers, to restate these problems in terms of formal, abstract, mathematical objects—numbers, arrays, lists, graphs, trees, and so on">
+      <data key="d0">It’s up to us, the algorithm designers, to restate these problems in terms of formal, abstract, mathematical objects—numbers, arrays, lists, graphs, trees, and so on</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="We must also determine if the problem statement carries any hidden assumptions, and state those assumptions explicitly">
+      <data key="d0">We must also determine if the problem statement carries any hidden assumptions, and state those assumptions explicitly</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="We may need to refine our specification as we develop the algorithm">
+      <data key="d0">We may need to refine our specification as we develop the algorithm</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="For example, our algorithm may require a particular input representation, or produce a particular output representation, that was left unspecified in the original informal problem description">
+      <data key="d0">For example, our algorithm may require a particular input representation, or produce a particular output representation, that was left unspecified in the original informal problem description</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Or our algorithm might actually solve a more general problem than we were originally asked to solve">
+      <data key="d0">Or our algorithm might actually solve a more general problem than we were originally asked to solve</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="This is a common feature of recursive algorithms">
+      <data key="d0">This is a common feature of recursive algorithms</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="The specification should include just enough detail that someone else could use our algorithm as a black box, without knowing how or why the algorithm actually works">
+      <data key="d0">The specification should include just enough detail that someone else could use our algorithm as a black box, without knowing how or why the algorithm actually works</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="In particular, we must describe the type and meaning of each input parameter, and exactly how the eventual output depends on the input parameters">
+      <data key="d0">In particular, we must describe the type and meaning of each input parameter, and exactly how the eventual output depends on the input parameters</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="On the other hand, our specification should deliberately hide any details that are not necessary to use the algorithm as a black box">
+      <data key="d0">On the other hand, our specification should deliberately hide any details that are not necessary to use the algorithm as a black box</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Let that which does not matter truly slide">
+      <data key="d0">Let that which does not matter truly slide</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="The lattice and duplation-and-mediation algorithms both solve the same problem: Given two non-negative integers x and y, each represented as an array of digits, compute the product x cdot y, also represented as an array of digits">
+      <data key="d0">The lattice and duplation-and-mediation algorithms both solve the same problem: Given two non-negative integers x and y, each represented as an array of digits, compute the product x cdot y, also represented as an array of digits</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="To someone using these algorithms, the choice of algorithm is completely irrelevant">
+      <data key="d0">To someone using these algorithms, the choice of algorithm is completely irrelevant</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="On the other hand, the Greek straightedge-and-compass algorithm solves a different problem, because the input and output values are represented by line segments instead of arrays of digits">
+      <data key="d0">On the other hand, the Greek straightedge-and-compass algorithm solves a different problem, because the input and output values are represented by line segments instead of arrays of digits</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Describing the Algorithm">
+      <data key="d0">Describing the Algorithm</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Computer programs are concrete representations of algorithms, but algorithms are not programs">
+      <data key="d0">Computer programs are concrete representations of algorithms, but algorithms are not programs</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Rather, algorithms are abstract mechanical procedures that can be implemented in any programming language that supports the underlying primitive operations">
+      <data key="d0">Rather, algorithms are abstract mechanical procedures that can be implemented in any programming language that supports the underlying primitive operations</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="The idiosyncratic syntactic details of your favorite programming language are utterly irrelevant">
+      <data key="d0">The idiosyncratic syntactic details of your favorite programming language are utterly irrelevant</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Focusing on these will only distract you (and your readers) from what’s really going on">
+      <data key="d0">Focusing on these will only distract you (and your readers) from what’s really going on</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="A good algorithm description is closer to what we should write in the comments of a real program than the code itself">
+      <data key="d0">A good algorithm description is closer to what we should write in the comments of a real program than the code itself</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Code is a poor medium for storytelling">
+      <data key="d0">Code is a poor medium for storytelling</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Algorithms have lots of idiomatic structure—especially conditionals, loops, function calls, and recursion—that are far too easily hidden by unstructured prose">
+      <data key="d0">Algorithms have lots of idiomatic structure—especially conditionals, loops, function calls, and recursion—that are far too easily hidden by unstructured prose</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Colloquial English is full of ambiguities and shades of meaning">
+      <data key="d0">Colloquial English is full of ambiguities and shades of meaning</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Prose is a poor medium for precision">
+      <data key="d0">Prose is a poor medium for precision</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="In my opinion, the clearest way to present an algorithm is using a combination of pseudocode and structured English">
+      <data key="d0">In my opinion, the clearest way to present an algorithm is using a combination of pseudocode and structured English</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Pseudocode uses the structure of formal programming languages and mathematics to break algorithms into primitive steps">
+      <data key="d0">Pseudocode uses the structure of formal programming languages and mathematics to break algorithms into primitive steps</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="The primitive steps themselves can be written using mathematical notation, pure English, or an appropriate mixture of the two, whatever is clearest">
+      <data key="d0">The primitive steps themselves can be written using mathematical notation, pure English, or an appropriate mixture of the two, whatever is clearest</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Wellwritten pseudocode reveals the internal structure of the algorithm but hides irrelevant implementation details">
+      <data key="d0">Wellwritten pseudocode reveals the internal structure of the algorithm but hides irrelevant implementation details</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Making the algorithm easier to understand, analyze, debug, and implement">
+      <data key="d0">Making the algorithm easier to understand, analyze, debug, and implement</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="describing algorithms" />
+    <node id="statement" />
+    <node id="job description" />
+    <node id="philosophical statement" />
+    <node id="goal" />
+    <node id="problem specification" />
+    <node id="step in the algorithm development process" />
+    <node id="description of algorithmic problems" />
+    <node id="example of refinement" />
+    <node id="description of recursive algorithms" />
+    <node id="example of the same problem" />
+    <node id="algorithm description" />
+    <node id="description of pseudocode" />
+    <node id="Radio City">
+      <data key="d0">Radio City</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="India">
+      <data key="d0">India</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="3 July 2001">
+      <data key="d0">3 July 2001</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="Hindi">
+      <data key="d0">Hindi</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="English">
+      <data key="d0">English</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="May 2008">
+      <data key="d0">May 2008</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="PlanetRadiocity.com">
+      <data key="d0">PlanetRadiocity.com</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="private FM radio station" />
+    <node id="New Media" />
+    <node id="music portal" />
+    <node id="news" />
+    <node id="videos" />
+    <node id="songs" />
+    <node id=":">
+      <data key="d0">:</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="A">
+      <data key="d0">A</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="y">
+      <data key="d0">y</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="z">
+      <data key="d0">z</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="R">
+      <data key="d0">R</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="T">
+      <data key="d0">T</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <node id="e">
+      <data key="d0">e</data>
+      <data key="d1">0</data>
+      <data key="d2" />
+      <data key="d3" />
+    </node>
+    <edge source="Multiplication" target="a mathematical operation">
+      <data key="d4">Multiplication</data>
+      <data key="d5">a mathematical operation</data>
+      <data key="d6">0</data>
+      <data key="d7">is</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Multiplication" target="two or more operands">
+      <data key="d4">Multiplication</data>
+      <data key="d5">two or more operands</data>
+      <data key="d6">0</data>
+      <data key="d7">requires</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Multiplication" target="result in a product">
+      <data key="d4">Multiplication</data>
+      <data key="d5">result in a product</data>
+      <data key="d6">0</data>
+      <data key="d7">can</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Multiplication" target="fundamental in arithmetic">
+      <data key="d4">Multiplication</data>
+      <data key="d5">fundamental in arithmetic</data>
+      <data key="d6">0</data>
+      <data key="d7">is</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Multiplication" target="used in various fields such as algebra, geometry, and physics">
+      <data key="d4">Multiplication</data>
+      <data key="d5">used in various fields such as algebra, geometry, and physics</data>
+      <data key="d6">0</data>
+      <data key="d7">is</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Multiplication" target="related to other mathematical operations like division and exponentiation">
+      <data key="d4">Multiplication</data>
+      <data key="d5">related to other mathematical operations like division and exponentiation</data>
+      <data key="d6">0</data>
+      <data key="d7">is</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Multiplication" target="important in computer science for algorithms and data structures">
+      <data key="d4">Multiplication</data>
+      <data key="d5">important in computer science for algorithms and data structures</data>
+      <data key="d6">0</data>
+      <data key="d7">is</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Introduction: Describing Algorithms, Specifying the Problem, N/A" target="describing algorithms">
+      <data key="d4">Introduction: Describing Algorithms, Specifying the Problem, N/A</data>
+      <data key="d5">describing algorithms</data>
+      <data key="d6">0</data>
+      <data key="d7">is about</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="I cannot emphasize this point enough" target="statement">
+      <data key="d4">I cannot emphasize this point enough</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Your primary job as an algorithm designer is teaching other people how and why your algorithms work" target="job description">
+      <data key="d4">Your primary job as an algorithm designer is teaching other people how and why your algorithms work</data>
+      <data key="d5">job description</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="If you can’t communicate your ideas to other human beings, they may as well not exist" target="philosophical statement">
+      <data key="d4">If you can’t communicate your ideas to other human beings, they may as well not exist</data>
+      <data key="d5">philosophical statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Producing correct and efficient executable code is an important but secondary goal" target="goal">
+      <data key="d4">Producing correct and efficient executable code is an important but secondary goal</data>
+      <data key="d5">goal</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Convincing yourself, your professors, your (prospective) employers, your colleagues, or your students that you are smart is at best a distant third" target="goal">
+      <data key="d4">Convincing yourself, your professors, your (prospective) employers, your colleagues, or your students that you are smart is at best a distant third</data>
+      <data key="d5">goal</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Specifying the Problem" target="problem specification">
+      <data key="d4">Specifying the Problem</data>
+      <data key="d5">problem specification</data>
+      <data key="d6">0</data>
+      <data key="d7">is about</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Before we can even start developing a new algorithm, we have to agree on what problem our algorithm is supposed to solve" target="step in the algorithm development process">
+      <data key="d4">Before we can even start developing a new algorithm, we have to agree on what problem our algorithm is supposed to solve</data>
+      <data key="d5">step in the algorithm development process</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Algorithmic problems are often presented using standard English, in terms of real-world objects" target="description of algorithmic problems">
+      <data key="d4">Algorithmic problems are often presented using standard English, in terms of real-world objects</data>
+      <data key="d5">description of algorithmic problems</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="It’s up to us, the algorithm designers, to restate these problems in terms of formal, abstract, mathematical objects—numbers, arrays, lists, graphs, trees, and so on" target="step in the algorithm development process">
+      <data key="d4">It’s up to us, the algorithm designers, to restate these problems in terms of formal, abstract, mathematical objects—numbers, arrays, lists, graphs, trees, and so on</data>
+      <data key="d5">step in the algorithm development process</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="We must also determine if the problem statement carries any hidden assumptions, and state those assumptions explicitly" target="step in the algorithm development process">
+      <data key="d4">We must also determine if the problem statement carries any hidden assumptions, and state those assumptions explicitly</data>
+      <data key="d5">step in the algorithm development process</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="We may need to refine our specification as we develop the algorithm" target="step in the algorithm development process">
+      <data key="d4">We may need to refine our specification as we develop the algorithm</data>
+      <data key="d5">step in the algorithm development process</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="For example, our algorithm may require a particular input representation, or produce a particular output representation, that was left unspecified in the original informal problem description" target="example of refinement">
+      <data key="d4">For example, our algorithm may require a particular input representation, or produce a particular output representation, that was left unspecified in the original informal problem description</data>
+      <data key="d5">example of refinement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Or our algorithm might actually solve a more general problem than we were originally asked to solve" target="example of refinement">
+      <data key="d4">Or our algorithm might actually solve a more general problem than we were originally asked to solve</data>
+      <data key="d5">example of refinement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="This is a common feature of recursive algorithms" target="description of recursive algorithms">
+      <data key="d4">This is a common feature of recursive algorithms</data>
+      <data key="d5">description of recursive algorithms</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="The specification should include just enough detail that someone else could use our algorithm as a black box, without knowing how or why the algorithm actually works" target="goal">
+      <data key="d4">The specification should include just enough detail that someone else could use our algorithm as a black box, without knowing how or why the algorithm actually works</data>
+      <data key="d5">goal</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="In particular, we must describe the type and meaning of each input parameter, and exactly how the eventual output depends on the input parameters" target="goal">
+      <data key="d4">In particular, we must describe the type and meaning of each input parameter, and exactly how the eventual output depends on the input parameters</data>
+      <data key="d5">goal</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="On the other hand, our specification should deliberately hide any details that are not necessary to use the algorithm as a black box" target="goal">
+      <data key="d4">On the other hand, our specification should deliberately hide any details that are not necessary to use the algorithm as a black box</data>
+      <data key="d5">goal</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Let that which does not matter truly slide" target="goal">
+      <data key="d4">Let that which does not matter truly slide</data>
+      <data key="d5">goal</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="The lattice and duplation-and-mediation algorithms both solve the same problem: Given two non-negative integers x and y, each represented as an array of digits, compute the product x cdot y, also represented as an array of digits" target="example of the same problem">
+      <data key="d4">The lattice and duplation-and-mediation algorithms both solve the same problem: Given two non-negative integers x and y, each represented as an array of digits, compute the product x cdot y, also represented as an array of digits</data>
+      <data key="d5">example of the same problem</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="To someone using these algorithms, the choice of algorithm is completely irrelevant" target="example of the same problem">
+      <data key="d4">To someone using these algorithms, the choice of algorithm is completely irrelevant</data>
+      <data key="d5">example of the same problem</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="On the other hand, the Greek straightedge-and-compass algorithm solves a different problem, because the input and output values are represented by line segments instead of arrays of digits" target="example of the same problem">
+      <data key="d4">On the other hand, the Greek straightedge-and-compass algorithm solves a different problem, because the input and output values are represented by line segments instead of arrays of digits</data>
+      <data key="d5">example of the same problem</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Describing the Algorithm" target="algorithm description">
+      <data key="d4">Describing the Algorithm</data>
+      <data key="d5">algorithm description</data>
+      <data key="d6">0</data>
+      <data key="d7">is about</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Computer programs are concrete representations of algorithms, but algorithms are not programs" target="statement">
+      <data key="d4">Computer programs are concrete representations of algorithms, but algorithms are not programs</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Rather, algorithms are abstract mechanical procedures that can be implemented in any programming language that supports the underlying primitive operations" target="statement">
+      <data key="d4">Rather, algorithms are abstract mechanical procedures that can be implemented in any programming language that supports the underlying primitive operations</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="The idiosyncratic syntactic details of your favorite programming language are utterly irrelevant" target="statement">
+      <data key="d4">The idiosyncratic syntactic details of your favorite programming language are utterly irrelevant</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Focusing on these will only distract you (and your readers) from what’s really going on" target="statement">
+      <data key="d4">Focusing on these will only distract you (and your readers) from what’s really going on</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="A good algorithm description is closer to what we should write in the comments of a real program than the code itself" target="statement">
+      <data key="d4">A good algorithm description is closer to what we should write in the comments of a real program than the code itself</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Code is a poor medium for storytelling" target="statement">
+      <data key="d4">Code is a poor medium for storytelling</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Algorithms have lots of idiomatic structure—especially conditionals, loops, function calls, and recursion—that are far too easily hidden by unstructured prose" target="statement">
+      <data key="d4">Algorithms have lots of idiomatic structure—especially conditionals, loops, function calls, and recursion—that are far too easily hidden by unstructured prose</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Colloquial English is full of ambiguities and shades of meaning" target="statement">
+      <data key="d4">Colloquial English is full of ambiguities and shades of meaning</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Prose is a poor medium for precision" target="statement">
+      <data key="d4">Prose is a poor medium for precision</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="In my opinion, the clearest way to present an algorithm is using a combination of pseudocode and structured English" target="statement">
+      <data key="d4">In my opinion, the clearest way to present an algorithm is using a combination of pseudocode and structured English</data>
+      <data key="d5">statement</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Pseudocode uses the structure of formal programming languages and mathematics to break algorithms into primitive steps" target="description of pseudocode">
+      <data key="d4">Pseudocode uses the structure of formal programming languages and mathematics to break algorithms into primitive steps</data>
+      <data key="d5">description of pseudocode</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="The primitive steps themselves can be written using mathematical notation, pure English, or an appropriate mixture of the two, whatever is clearest" target="description of pseudocode">
+      <data key="d4">The primitive steps themselves can be written using mathematical notation, pure English, or an appropriate mixture of the two, whatever is clearest</data>
+      <data key="d5">description of pseudocode</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Wellwritten pseudocode reveals the internal structure of the algorithm but hides irrelevant implementation details" target="description of pseudocode">
+      <data key="d4">Wellwritten pseudocode reveals the internal structure of the algorithm but hides irrelevant implementation details</data>
+      <data key="d5">description of pseudocode</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Making the algorithm easier to understand, analyze, debug, and implement" target="goal">
+      <data key="d4">Making the algorithm easier to understand, analyze, debug, and implement</data>
+      <data key="d5">goal</data>
+      <data key="d6">0</data>
+      <data key="d7">is a</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Radio City" target="private FM radio station">
+      <data key="d4">Radio City</data>
+      <data key="d5">private FM radio station</data>
+      <data key="d6">0</data>
+      <data key="d7">is</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Radio City" target="Hindi">
+      <data key="d4">Radio City</data>
+      <data key="d5">Hindi</data>
+      <data key="d6">0</data>
+      <data key="d7">played songs in</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Radio City" target="English">
+      <data key="d4">Radio City</data>
+      <data key="d5">English</data>
+      <data key="d6">0</data>
+      <data key="d7">played songs in</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Radio City" target="New Media">
+      <data key="d4">Radio City</data>
+      <data key="d5">New Media</data>
+      <data key="d6">0</data>
+      <data key="d7">forayed into</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="Radio City" target="PlanetRadiocity.com">
+      <data key="d4">Radio City</data>
+      <data key="d5">PlanetRadiocity.com</data>
+      <data key="d6">0</data>
+      <data key="d7">launched</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="May 2008" target="PlanetRadiocity.com">
+      <data key="d4">PlanetRadiocity.com</data>
+      <data key="d5">May 2008</data>
+      <data key="d6">0</data>
+      <data key="d7">launched in</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="PlanetRadiocity.com" target="music portal">
+      <data key="d4">PlanetRadiocity.com</data>
+      <data key="d5">music portal</data>
+      <data key="d6">0</data>
+      <data key="d7">is</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="PlanetRadiocity.com" target="news">
+      <data key="d4">PlanetRadiocity.com</data>
+      <data key="d5">news</data>
+      <data key="d6">0</data>
+      <data key="d7">offers</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="PlanetRadiocity.com" target="videos">
+      <data key="d4">PlanetRadiocity.com</data>
+      <data key="d5">videos</data>
+      <data key="d6">0</data>
+      <data key="d7">offers</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+    <edge source="PlanetRadiocity.com" target="songs">
+      <data key="d4">PlanetRadiocity.com</data>
+      <data key="d5">songs</data>
+      <data key="d6">0</data>
+      <data key="d7">offers</data>
+      <data key="d8">1.0</data>
+      <data key="d9" />
+      <data key="d10" />
+      <data key="d11">0</data>
+    </edge>
+  </graph>
+</graphml>

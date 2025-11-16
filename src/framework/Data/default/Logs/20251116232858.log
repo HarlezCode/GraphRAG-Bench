@@ -1,0 +1,105 @@
+2025-11-16 23:29:05.711 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 23:29:05.712 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 23:29:09.771 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 23:29:09.772 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 23:29:09.773 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 23:29:10.100 | INFO     | Core.Engine.GraphRAGEngine:process_documents:190 - 🚀 Starting document processing workflow
+2025-11-16 23:29:11.754 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 23:29:12.430 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting property name enclosed in double quotes: line 1 column 3 (char 2). Attempted string: { B E E R }...
+2025-11-16 23:29:12.431 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 23:29:15.802 | ERROR    | Core.Engine.GraphRAGEngine:process_documents:241 - ❌ Document processing failed: 0
+2025-11-16 23:29:15.803 | ERROR    | __main__:main:244 - Application execution failed
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 253, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x732aa4713880>
+    │       └ <function run at 0x732c28d99ee0>
+    └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x732aa4834590>
+           │      └ <function Runner.run at 0x732c28c4d620>
+           └ <asyncio.runners.Runner object at 0x732aa49ed490>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at /data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py:244> cb=[_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x732c28c4b1a0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x732aa49ed490>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x732c28c4b100>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x732c28c4cf40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x732c28d9a980>
+    └ <Handle Task.task_wakeup(<_GatheringFu...n=KeyError(0)>)>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<_GatheringFu...n=KeyError(0)>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<_GatheringFu...n=KeyError(0)>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<_GatheringFu...n=KeyError(0)>)>
+
+> File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 224, in main
+    await app.process_documents(force_rebuild=args.force_rebuild)
+          │   │                               │    └ False
+          │   │                               └ Namespace(opt='Option/merged_config.yaml', dataset_name='GraphRAG-Bench2', method='hippo_rag', force_rebuild=False, max_queri...
+          │   └ <function GraphRAGApplication.process_documents at 0x732aa4711f80>
+          └ <__main__.GraphRAGApplication object at 0x732b081433d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 64, in process_documents
+    await self.engine.process_documents(corpus, force_rebuild=force_rebuild)
+          │    │      │                 │                     └ False
+          │    │      │                 └ [{'title': 'Introduction: What is an algorithm?, N/A, N/A', 'content': '\n\nIntroduction \n0.1 What is an algorithm? \nAn alg...
+          │    │      └ <function GraphRAGEngine.process_documents at 0x732bcd26a660>
+          │    └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench2', exp_name='default', data_root='./...
+          └ <__main__.GraphRAGApplication object at 0x732b081433d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 200, in process_documents
+    await self._execute_stage("graph_construction", chunks, force_rebuild)
+          │    │                                    │       └ False
+          │    │                                    └ [TextChunk(tokens=1418, chunk_id='0', content="{'title': 'Introduction: What is an algorithm?, N/A, N/A', 'content': '\\n\\nI...
+          │    └ <function GraphRAGEngine._execute_stage at 0x732bcd26a700>
+          └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench2', exp_name='default', data_root='./...
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 249, in _execute_stage
+    await stage.execute(*args, **kwargs)
+          │     │        │       └ {}
+          │     │        └ ([TextChunk(tokens=1418, chunk_id='0', content="{'title': 'Introduction: What is an algorithm?, N/A, N/A', 'content': '\\n\\n...
+          │     └ <function EntityRelationGraphBuilder.execute at 0x732a771762a0>
+          └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x732a776cc810>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 136, in execute
+    self.graph = await self._build_graph_batched(chunks)
+    │    │             │    │                    └ [TextChunk(tokens=1418, chunk_id='0', content="{'title': 'Introduction: What is an algorithm?, N/A, N/A', 'content': '\\n\\nI...
+    │    │             │    └ <function EntityRelationGraphBuilder._build_graph_batched at 0x732a77176340>
+    │    │             └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x732a776cc810>
+    │    └ None
+    └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x732a776cc810>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 163, in _build_graph_batched
+    batch_results = await asyncio.gather(*tasks)
+                          │       │       └ [<coroutine object EntityRelationGraphBuilder._build_graph_batched.<locals>.process_chunk_with_semaphore at 0x732a77aaae30>, ...
+                          │       └ <function gather at 0x732c28c323e0>
+                          └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 149, in process_chunk_with_semaphore
+    return await self._extract_entities_relations(chunk)
+                 │    │                           └ TextChunk(tokens=1693, chunk_id='0', content="{'title': 'Introduction: Analyzing Algorithms, Running Time, N/A', 'content': '...
+                 │    └ <function EntityRelationGraphBuilder._extract_entities_relations at 0x732a77176520>
+                 └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x732a776cc810>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 256, in _extract_entities_relations
+    src_id=rel[0],
+           └ {'subject': 'Running Time', 'predicate': 'describes', 'object': 'how quickly different algorithms run'}
+
+KeyError: 0

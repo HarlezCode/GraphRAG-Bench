@@ -1,0 +1,203 @@
+2025-11-15 15:40:17.641 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-15 15:40:17.642 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-15 15:40:21.463 | WARNING  | Core.Indexing.IndexManagerFactory:create_manager:437 - Failed to create embedding model: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 23.64 GiB of which 26.62 MiB is free. Process 2258961 has 21.72 GiB memory in use. Including non-PyTorch memory, this process has 1.84 GiB memory in use. Of the allocated memory 1.46 GiB is allocated by PyTorch, and 4.77 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+2025-11-15 15:40:21.639 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-15 15:40:21.641 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-15 15:40:21.642 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-15 15:40:21.657 | INFO     | Core.Engine.GraphRAGEngine:process_documents:188 - 🚀 Starting document processing workflow
+2025-11-15 15:40:21.758 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 0.010(s), this was the 1st time calling it.
+2025-11-15 15:40:22.387 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 0.639(s), this was the 2nd time calling it.
+2025-11-15 15:40:22.855 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 1.107(s), this was the 3rd time calling it.
+2025-11-15 15:40:22.907 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 1.159(s), this was the 4th time calling it.
+2025-11-15 15:40:28.342 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 6.594(s), this was the 5th time calling it.
+2025-11-15 15:40:37.969 | WARNING  | tenacity.after:log_it:44 - Finished call to 'Core.Provider.OpenaiApi.OpenAILLM.acompletion_text' after 16.221(s), this was the 6th time calling it.
+2025-11-15 15:40:37.970 | ERROR    | Core.Common.Utils:log_and_reraise:312 - Retry attempts exhausted. Last exception: Error code: 405 - {'detail': 'Method Not Allowed'}
+2025-11-15 15:40:37.970 | WARNING  | Core.Common.Utils:log_and_reraise:313 - 
+Recommend going to https://deepwisdom.feishu.cn/wiki/MsGnwQBjiif9c3koSJNcYaoSnu4#part-XdatdVlhEojeAfxaaEZcMV3ZniQ
+See FAQ 5.8
+
+2025-11-15 15:40:37.970 | ERROR    | Core.Engine.GraphRAGEngine:process_documents:238 - ❌ Document processing failed: Error code: 405 - {'detail': 'Method Not Allowed'}
+2025-11-15 15:40:37.970 | ERROR    | __main__:main:243 - Application execution failed
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 252, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7ccf80d51260>
+    │       └ <function run at 0x7cd104999ee0>
+    └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x7ccf80fa7de0>
+           │      └ <function Runner.run at 0x7cd10484d620>
+           └ <asyncio.runners.Runner object at 0x7cd0b0509150>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at /data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py:243> cb=[_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7cd10484b1a0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7cd0b0509150>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7cd10484b100>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7cd10484cf40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7cd10499a980>
+    └ <Handle <TaskStepMethWrapper object at 0x7ccf606ccd60>()>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle <TaskStepMethWrapper object at 0x7ccf606ccd60>()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle <TaskStepMethWrapper object at 0x7ccf606ccd60>()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle <TaskStepMethWrapper object at 0x7ccf606ccd60>()>
+
+> File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 223, in main
+    await app.process_documents(force_rebuild=args.force_rebuild)
+          │   │                               │    └ False
+          │   │                               └ Namespace(opt='Option/merged_config.yaml', dataset_name='GraphRAG-Bench', method='hippo_rag', force_rebuild=False, max_querie...
+          │   └ <function GraphRAGApplication.process_documents at 0x7ccf80f2b920>
+          └ <__main__.GraphRAGApplication object at 0x7ccf8a9141d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 63, in process_documents
+    await self.engine.process_documents(corpus, force_rebuild=force_rebuild)
+          │    │      │                 │                     └ False
+          │    │      │                 └ [{'title': 'What is an algorithm? N/A N/A', 'content': '\n\nIntroduction \n0.1 What is an algorithm? \nAn algorithm is an exp...
+          │    │      └ <function GraphRAGEngine.process_documents at 0x7cd0a9f64900>
+          │    └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+          └ <__main__.GraphRAGApplication object at 0x7ccf8a9141d0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 198, in process_documents
+    await self._execute_stage("graph_construction", chunks, force_rebuild)
+          │    │                                    │       └ False
+          │    │                                    └ [TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0...
+          │    └ <function GraphRAGEngine._execute_stage at 0x7cd0a9f649a0>
+          └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 246, in _execute_stage
+    await stage.execute(*args, **kwargs)
+          │     │        │       └ {}
+          │     │        └ ([TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n...
+          │     └ <function EntityRelationGraphBuilder.execute at 0x7ccf602bb4c0>
+          └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x7ccf61105b10>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 95, in execute
+    self.graph = await self._build_graph(chunks)
+    │    │             │    │            └ [TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0...
+    │    │             │    └ <function EntityRelationGraphBuilder._build_graph at 0x7ccf602bb560>
+    │    │             └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x7ccf61105b10>
+    │    └ None
+    └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x7ccf61105b10>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 107, in _build_graph
+    entities, relationships = await self._extract_entities_relations(chunk)
+                                    │    │                           └ TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0....
+                                    │    └ <function EntityRelationGraphBuilder._extract_entities_relations at 0x7ccf602bb600>
+                                    └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x7ccf61105b10>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 135, in _extract_entities_relations
+    entities = await self._named_entity_recognition(chunk.content)
+                     │    │                         │     └ "{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0.1 What is an algorithm? \\nAn algorithm is an...
+                     │    │                         └ TextChunk(tokens=1200, chunk_id='0', content="{'title': 'What is an algorithm? N/A N/A', 'content': '\\n\\nIntroduction \\n0....
+                     │    └ <function EntityRelationGraphBuilder._named_entity_recognition at 0x7ccf602bb6a0>
+                     └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x7ccf61105b10>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Graph/GraphBuilderFactory.py", line 171, in _named_entity_recognition
+    response = await self.llm.aask(ner_messages, format="json")
+                     │    │   │    └ 'Your task is to extract named entities from the given paragraph. \nRespond with a JSON list of entities.\n\nPlease reference...
+                     │    │   └ <function BaseLLM.aask at 0x7ccf7ea363e0>
+                     │    └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x7ccf7ed36d90>
+                     └ <Core.Graph.GraphBuilderFactory.EntityRelationGraphBuilder object at 0x7ccf61105b10>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/BaseLLM.py", line 146, in aask
+    rsp = await self.acompletion_text(message, stream=stream, timeout=self.get_timeout(timeout), max_tokens = max_tokens, format = format)
+                │    │                │               │               │    │           │                      │                    └ 'json'
+                │    │                │               │               │    │           │                      └ None
+                │    │                │               │               │    │           └ 0
+                │    │                │               │               │    └ <function BaseLLM.get_timeout at 0x7ccf7ea37100>
+                │    │                │               │               └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x7ccf7ed36d90>
+                │    │                │               └ False
+                │    │                └ [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to extract named en...
+                │    └ <function OpenAILLM.acompletion_text at 0x7ccf7ea37e20>
+                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x7ccf7ed36d90>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 189, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+                 │    │    │       └ {'stream': False, 'timeout': 600, 'max_tokens': None, 'format': 'json'}
+                 │    │    └ (<Core.Provider.OpenaiApi.OpenAILLM object at 0x7ccf7ed36d90>, [{'role': 'system', 'content': 'You are a helpful assistant.'}...
+                 │    └ <function OpenAILLM.acompletion_text at 0x7ccf7ea37ba0>
+                 └ <AsyncRetrying object at 0x7cce7ccd9d50 (stop=<tenacity.stop.stop_after_attempt object at 0x7ccf7ee45910>, wait=<tenacity.wai...
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 111, in __call__
+    do = await self.iter(retry_state=retry_state)
+               │    │                └ <RetryCallState 137229839962384: attempt #6; slept for 16.18; last result: failed (APIStatusError Error code: 405 - {'detail'...
+               │    └ <function AsyncRetrying.iter at 0x7ccf7ee67e20>
+               └ <AsyncRetrying object at 0x7cce7ccd9d50 (stop=<tenacity.stop.stop_after_attempt object at 0x7ccf7ee45910>, wait=<tenacity.wai...
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 153, in iter
+    result = await action(retry_state)
+                   │      └ <RetryCallState 137229839962384: attempt #6; slept for 16.18; last result: failed (APIStatusError Error code: 405 - {'detail'...
+                   └ <function wrap_to_async_func.<locals>.inner at 0x7ccf6054aca0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           │     │       └ {}
+           │     └ (<RetryCallState 137229839962384: attempt #6; slept for 16.18; last result: failed (APIStatusError Error code: 405 - {'detail...
+           └ <function log_and_reraise at 0x7ccf7ecf93a0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Common/Utils.py", line 319, in log_and_reraise
+    raise retry_state.outcome.exception()
+          │           │       └ <function Future.exception at 0x7cd105000cc0>
+          │           └ <Future at 0x7ccf6033e6d0 state=finished raised APIStatusError>
+          └ <RetryCallState 137229839962384: attempt #6; slept for 16.18; last result: failed (APIStatusError Error code: 405 - {'detail'...
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/tenacity/asyncio/__init__.py", line 114, in __call__
+    result = await fn(*args, **kwargs)
+                   │   │       └ {'stream': False, 'timeout': 600, 'max_tokens': None, 'format': 'json'}
+                   │   └ (<Core.Provider.OpenaiApi.OpenAILLM object at 0x7ccf7ed36d90>, [{'role': 'system', 'content': 'You are a helpful assistant.'}...
+                   └ <function OpenAILLM.acompletion_text at 0x7ccf7ea37ba0>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/OpenaiApi.py", line 157, in acompletion_text
+    rsp = await self._achat_completion(messages, timeout=self.get_timeout(timeout), max_tokens = max_tokens)
+                │    │                 │                 │    │           │                      └ None
+                │    │                 │                 │    │           └ 600
+                │    │                 │                 │    └ <function BaseLLM.get_timeout at 0x7ccf7ea37100>
+                │    │                 │                 └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x7ccf7ed36d90>
+                │    │                 └ [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to extract named en...
+                │    └ <function OpenAILLM._achat_completion at 0x7ccf7ea37880>
+                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x7ccf7ed36d90>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Provider/OpenaiApi.py", line 138, in _achat_completion
+    rsp: ChatCompletion = await self.aclient.chat.completions.create(**kwargs)
+                                │    │       │    │           │        └ {'messages': [{'role': 'system', 'content': 'You are a helpful assistant.'}, {'role': 'user', 'content': 'Your task is to ext...
+                                │    │       │    │           └ <function AsyncCompletions.create at 0x7ccf7efe6200>
+                                │    │       │    └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x7ccf602d6fd0>
+                                │    │       └ <openai.resources.chat.chat.AsyncChat object at 0x7ccf7ea79e90>
+                                │    └ <openai.AsyncOpenAI object at 0x7ccf7ebe3dd0>
+                                └ <Core.Provider.OpenaiApi.OpenAILLM object at 0x7ccf7ed36d90>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/resources/chat/completions/completions.py", line 2002, in create
+    return await self._post(
+                 │    └ <bound method AsyncAPIClient.post of <openai.AsyncOpenAI object at 0x7ccf7ebe3dd0>>
+                 └ <openai.resources.chat.completions.completions.AsyncCompletions object at 0x7ccf602d6fd0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1767, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+                 │    │       │        │            │                  └ openai.AsyncStream[openai.types.chat.chat_completion_chunk.ChatCompletionChunk]
+                 │    │       │        │            └ False
+                 │    │       │        └ FinalRequestOptions(method='post', url='/chat/completions', params={}, headers=NOT_GIVEN, max_retries=NOT_GIVEN, timeout=600,...
+                 │    │       └ <class 'openai.types.chat.chat_completion.ChatCompletion'>
+                 │    └ <function AsyncAPIClient.request at 0x7ccf7f42f9c0>
+                 └ <openai.AsyncOpenAI object at 0x7ccf7ebe3dd0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1461, in request
+    return await self._request(
+                 │    └ <function AsyncAPIClient._request at 0x7ccf7f42fa60>
+                 └ <openai.AsyncOpenAI object at 0x7ccf7ebe3dd0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/openai/_base_client.py", line 1562, in _request
+    raise self._make_status_error_from_response(err.response) from None
+          │    └ <function BaseClient._make_status_error_from_response at 0x7ccf7f42cb80>
+          └ <openai.AsyncOpenAI object at 0x7ccf7ebe3dd0>
+
+openai.APIStatusError: Error code: 405 - {'detail': 'Method Not Allowed'}

@@ -1,0 +1,101 @@
+2025-11-16 17:06:12.160 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 17:06:12.161 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 17:06:16.536 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 17:06:16.537 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 17:06:16.537 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 17:06:16.849 | INFO     | Core.Engine.GraphRAGEngine:process_documents:190 - 🚀 Starting document processing workflow
+2025-11-16 17:06:23.591 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 115 (char 114). Attempted string: {
+  "named_entities": [
+    "Multiplication",
+    ...
+2025-11-16 17:06:23.592 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:06:23.763 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ',' delimiter: line 1 column 1206 (char 1205). Attempted string: {
+  "named_entities": ["Introduction: Analyzing Al...
+2025-11-16 17:06:23.763 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:06:41.802 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:06:41.806 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:06:41.808 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:06:42.248 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:06:42.537 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:06:42.934 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:06:46.715 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:07:01.396 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:07:01.399 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 17:07:01.400 | ERROR    | Core.Engine.GraphRAGEngine:process_documents:242 - ❌ Document processing failed: [Errno 2] No such file or directory: '../../Data/GraphRAG-Bench/new_graph.graphml'
+2025-11-16 17:07:01.400 | ERROR    | __main__:main:244 - Application execution failed
+Traceback (most recent call last):
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 253, in <module>
+    asyncio.run(main())
+    │       │   └ <function main at 0x7123aa123b00>
+    │       └ <function run at 0x71252e77dee0>
+    └ <module 'asyncio' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object main at 0x7123aa0446a0>
+           │      └ <function Runner.run at 0x71252e60d620>
+           └ <asyncio.runners.Runner object at 0x71252e4fc1d0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<main() running at /data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py:244> cb=[_...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x71252e60b1a0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x71252e4fc1d0>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x71252e60b100>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x71252e60cf40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x71252e77e980>
+    └ <Handle Task.task_wakeup(<_GatheringFu....], []), ...]>)>
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<_GatheringFu....], []), ...]>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<_GatheringFu....], []), ...]>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<_GatheringFu....], []), ...]>)>
+
+> File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 224, in main
+    await app.process_documents(force_rebuild=args.force_rebuild)
+          │   │                               │    └ False
+          │   │                               └ Namespace(opt='Option/merged_config.yaml', dataset_name='GraphRAG-Bench', method='hippo_rag', force_rebuild=False, max_querie...
+          │   └ <function GraphRAGApplication.process_documents at 0x7123aa122200>
+          └ <__main__.GraphRAGApplication object at 0x7123aa0bc550>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/main.py", line 64, in process_documents
+    await self.engine.process_documents(corpus, force_rebuild=force_rebuild)
+          │    │      │                 │                     └ False
+          │    │      │                 └ [{'title': 'Introduction: What is an algorithm?, N/A, N/A', 'content': '\n\nIntroduction \n0.1 What is an algorithm? \nAn alg...
+          │    │      └ <function GraphRAGEngine.process_documents at 0x7124cea7e8e0>
+          │    └ GraphRAGEngine(config=MergedConfig(extra_fields=None, working_dir='./Data/GraphRAG-Bench', exp_name='default', data_root='./D...
+          └ <__main__.GraphRAGApplication object at 0x7123aa0bc550>
+
+  File "/data2/chhuangab/projects/GraphRAG-Bench/src/framework/Core/Engine/GraphRAGEngine.py", line 207, in process_documents
+    nx.write_graphml(graph, "../../Data/GraphRAG-Bench/new_graph.graphml")
+    │  │             └ <networkx.classes.graph.Graph object at 0x712393146910>
+    │  └ <function write_graphml_lxml at 0x7124d4055ee0>
+    └ <module 'networkx' from '/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/networkx/__init__.py'>
+
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/networkx/utils/decorators.py", line 788, in func
+    return argmap._lazy_compile(__wrapper)(*args, **kwargs)
+           │      │                         │       └ {}
+           │      │                         └ (<networkx.classes.graph.Graph object at 0x712393146910>, '../../Data/GraphRAG-Bench/new_graph.graphml')
+           │      └ <staticmethod(<function argmap._lazy_compile at 0x7124d59b7880>)>
+           └ <class 'networkx.utils.decorators.argmap'>
+  File "<class 'networkx.utils.decorators.argmap'> compilation 5", line 3, in argmap_write_graphml_lxml_1
+  File "/data2/chhuangab/miniconda3/envs/ragbench__light/lib/python3.11/site-packages/networkx/utils/decorators.py", line 198, in _open_file
+    fobj = _dispatch_dict[ext](path, mode=mode)
+           │              │    │          └ 'wb'
+           │              │    └ '../../Data/GraphRAG-Bench/new_graph.graphml'
+           │              └ '.graphml'
+           └ defaultdict(<function <lambda> at 0x7124d59b7420>, {'.gz': <function open at 0x7124f0746200>, '.gzip': <function open at 0x71...
+
+FileNotFoundError: [Errno 2] No such file or directory: '../../Data/GraphRAG-Bench/new_graph.graphml'

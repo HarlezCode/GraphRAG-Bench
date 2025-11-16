@@ -14,6 +14,7 @@ from Core.Common.Logger import logger
 from Core.Utils.Display import StatusDisplay, ProgressDisplay
 from Core.Schema.ChunkSchema import TextChunk
 from Core.Schema.EntityRelation import Entity, Relationship
+import asyncio
 
 
 class GraphType(Enum):
@@ -126,30 +127,87 @@ class EntityRelationGraphBuilder(GraphBuilder):
         """Execute entity-relation graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Entity-Relation Graph")
         
-        # Try to load from cache first
-        if await self._try_load_cached_graph(force_rebuild):
-            StatusDisplay.show_success(f"Loaded cached graph with {self.graph.number_of_nodes()} nodes and {self.graph.number_of_edges()} edges")
+        # Check if rebuild is needed
+        if not force_rebuild and self.graph is not None:
+            StatusDisplay.show_info("Using existing graph")
             return self.graph
         
-        # Build graph from scratch
-        self.graph = await self._build_graph(chunks)
-        StatusDisplay.show_success(f"Entity-relation graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
-        
-        # Save to cache
-        await self._save_graph_to_cache()
-        
-        return self.graph
+        # Build graph
+        self.graph = await self._build_graph_batched(chunks)
+        # self.graph = await self._build_graph(chunks)
 
+        await self._save_graph_to_cache()
+        StatusDisplay.show_success(f"Entity-relation graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
+        return self.graph
+    
+
+    async def _build_graph_batched(self, chunks: List[TextChunk], batch_size: int = 10) -> nx.Graph:
+        """Process chunks in batches with controlled concurrency"""
+        graph = nx.Graph()
+        semaphore = asyncio.Semaphore(10)  # Limit concurrent operations
+        
+        async def process_chunk_with_semaphore(chunk):
+            async with semaphore:
+                return await self._extract_entities_relations(chunk)
+        
+        total_chunks = len(chunks)
+        
+        # Process in batches
+        for i in range(0, total_chunks, batch_size):
+            batch = chunks[i:i + batch_size]
+            
+            # Process current batch concurrently
+            tasks = [
+                process_chunk_with_semaphore(chunk)
+                for chunk in batch
+            ]
+            
+            batch_results = await asyncio.gather(*tasks)
+            
+            # Update graph with batch results
+            for entities, relationships in batch_results:
+                self._update_graph(graph, entities, relationships)
+            
+            ProgressDisplay.show_progress(
+                min(i + batch_size, total_chunks), 
+                total_chunks, 
+                "Processing text chunks"
+            )
+        
+        return graph
+
+    def _update_graph(self, graph: nx.Graph, entities: List, relationships: List):
+        """Thread-safe graph update"""
+        # Add entity nodes
+        for entity in entities:
+            if not graph.has_node(entity.entity_name):
+                graph.add_node(entity.entity_name, **entity.to_dict())
+            else:
+                existing_data = graph.nodes[entity.entity_name]
+                merged_data = self._merge_entity_data(existing_data, entity.to_dict())
+                graph.nodes[entity.entity_name].update(merged_data)
+        
+        # Add relationship edges
+        for relation in relationships:
+            edge_key = (relation.src_id, relation.tgt_id)
+            if not graph.has_edge(*edge_key):
+                graph.add_edge(*edge_key, **relation.to_dict())
+            else:
+                existing_data = graph.edges[edge_key]
+                merged_data = self._merge_relation_data(existing_data, relation.to_dict())
+                graph.edges[edge_key].update(merged_data)
+
+    
     async def _build_graph(self, chunks: List[TextChunk]) -> nx.Graph:
         """Build entity-relation graph"""
         graph = nx.Graph()
-
+        
         total_chunks = len(chunks)
         for i, chunk in enumerate(chunks):
             ProgressDisplay.show_progress(i + 1, total_chunks, "Processing text chunks")
-
+            
             entities, relationships = await self._extract_entities_relations(chunk)
-
+            
             # Add entity nodes
             for entity in entities:
                 if not graph.has_node(entity.entity_name):
@@ -159,7 +217,7 @@ class EntityRelationGraphBuilder(GraphBuilder):
                     existing_data = graph.nodes[entity.entity_name]
                     merged_data = self._merge_entity_data(existing_data, entity.to_dict())
                     graph.nodes[entity.entity_name].update(merged_data)
-
+            
             # Add relationship edges
             for relation in relationships:
                 edge_key = (relation.src_id, relation.tgt_id)
@@ -170,54 +228,43 @@ class EntityRelationGraphBuilder(GraphBuilder):
                     existing_data = graph.edges[edge_key]
                     merged_data = self._merge_relation_data(existing_data, relation.to_dict())
                     graph.edges[edge_key].update(merged_data)
-
+        
+        
         return graph
-
-    # async def _build_graph(self, chunks: List[TextChunk]) -> nx.Graph:
-    #     """Build entity-relation graph"""
-    #     graph = nx.Graph()
-
-    #     total_chunks = len(chunks)
-    #     batch_size = 128
-    #     logger.info(f"Processing {total_chunks} chunks in batches of {batch_size}...")
-
-    #     # Process chunks in batches
-    #     for batch_start in range(0, total_chunks, batch_size):
-    #         batch_end = min(batch_start + batch_size, total_chunks)
-    #         batch_chunks = chunks[batch_start:batch_end]
-
-    #         # Process batch in parallel
-    #         tasks = [self._extract_entities_relations(chunk) for chunk in batch_chunks]
-    #         results = await asyncio.gather(*tasks)
-
-    #         # Merge batch results into the graph
-    #         for i, (entities, relationships) in enumerate(results):
-    #             chunk_idx = batch_start + i + 1
-    #             ProgressDisplay.show_progress(chunk_idx, total_chunks, f"Building graph (batch {batch_start//batch_size + 1})")
-
-    #             # Add entity nodes
-    #             for entity in entities:
-    #                 if not graph.has_node(entity.entity_name):
-    #                     graph.add_node(entity.entity_name, **entity.to_dict())
-    #                 else:
-    #                     # Merge entity information
-    #                     existing_data = graph.nodes[entity.entity_name]
-    #                     merged_data = self._merge_entity_data(existing_data, entity.to_dict())
-    #                     graph.nodes[entity.entity_name].update(merged_data)
-
-    #             # Add relationship edges
-    #             for relation in relationships:
-    #                 edge_key = (relation.src_id, relation.tgt_id)
-    #                 if not graph.has_edge(*edge_key):
-    #                     graph.add_edge(*edge_key, **relation.to_dict())
-    #                 else:
-    #                     # Merge relationship information
-    #                     existing_data = graph.edges[edge_key]
-    #                     merged_data = self._merge_relation_data(existing_data, relation.to_dict())
-    #                     graph.edges[edge_key].update(merged_data)
-
-    #     return graph
-
+    
+    # async def _extract_entities_relations(self, chunk: TextChunk) -> tuple[List[Entity], List[Relationship]]:
+    #     """Extract entities and relationships"""
+    #     # Use LLM for named entity recognition
+    #     entities = await self._named_entity_recognition(chunk.content)
+        
+    #     # Use LLM for relationship extraction
+    #     relationships = await self._openie_extraction(chunk.content, entities)
+        
+    #     # Convert to Entity and Relationship objects
+    #     entity_objects = []
+    #     for entity_name in entities:
+    #         entity = Entity(
+    #             entity_name=entity_name,
+    #             entity_type="",  # Can be extracted from NER results
+    #             description="",
+    #             source_id=chunk.chunk_id
+    #         )
+    #         entity_objects.append(entity)
+        
+    #     relationship_objects = []
+    #     for rel in relationships:
+    #         if len(rel) >= 3:
+    #             relationship = Relationship(
+    #                 src_id=rel[0],
+    #                 tgt_id=rel[2],
+    #                 relation_name=rel[1],
+    #                 description="",
+    #                 weight=1.0,
+    #                 source_id=chunk.chunk_id
+    #             )
+    #             relationship_objects.append(relationship)
+        
+    #     return entity_objects, relationship_objects
     async def _extract_entities_relations(self, chunk: TextChunk) -> tuple[List[Entity], List[Relationship]]:
         """Extract entities and relationships"""
         # Use LLM for named entity recognition
@@ -267,42 +314,43 @@ class EntityRelationGraphBuilder(GraphBuilder):
             relationship_objects.append(relationship)
 
         return entity_objects, relationship_objects
-
+    
     async def _named_entity_recognition(self, text: str) -> List[str]:
         """Named entity recognition"""
         from Core.Prompt import GraphPrompt
-
+        
         ner_messages = GraphPrompt.NER.format(user_input=text)
         response = await self.llm.aask(ner_messages, format="json")
-
+        
+        entities = []
         if 'named_entities' in response:
             entities = response['named_entities']
-
+        
         return entities
-
+    
     async def _openie_extraction(self, text: str, entities: List[str]) -> List[tuple]:
         """Open information extraction"""
         from Core.Prompt import GraphPrompt
         import json
-
+        
         named_entity_json = {"named_entities": entities}
         openie_messages = GraphPrompt.OPENIE_POST_NET.format(
             passage=text,
             named_entity_json=json.dumps(named_entity_json)
         )
-
+        
         response = await self.llm.aask(openie_messages, format="json")
-
+        
         triples = []
         if 'triples' in response:
             triples = response['triples']
-
+        
         return triples
-
+    
     def _merge_entity_data(self, existing: Dict, new: Dict) -> Dict:
         """Merge entity data"""
         merged = existing.copy()
-
+        
         # Merge descriptions
         if self.config.enable_entity_description:
             existing_desc = existing.get('description', '')
@@ -311,7 +359,7 @@ class EntityRelationGraphBuilder(GraphBuilder):
                 merged['description'] = f"{existing_desc}; {new_desc}"
             elif new_desc:
                 merged['description'] = new_desc
-
+        
         # Merge types
         if self.config.enable_entity_type:
             existing_type = existing.get('entity_type', '')
@@ -320,19 +368,19 @@ class EntityRelationGraphBuilder(GraphBuilder):
                 merged['entity_type'] = f"{existing_type}, {new_type}"
             elif new_type:
                 merged['entity_type'] = new_type
-
+        
         # Merge source IDs
         existing_sources = existing.get('source_id', '').split(',') if existing.get('source_id') else []
         new_sources = new.get('source_id', '').split(',') if new.get('source_id') else []
         all_sources = list(set(existing_sources + new_sources))
         merged['source_id'] = ','.join(all_sources)
-
+        
         return merged
-
+    
     def _merge_relation_data(self, existing: Dict, new: Dict) -> Dict:
         """Merge relationship data"""
         merged = existing.copy()
-
+        
         # Merge descriptions
         if self.config.enable_edge_description:
             existing_desc = existing.get('description', '')
@@ -341,7 +389,7 @@ class EntityRelationGraphBuilder(GraphBuilder):
                 merged['description'] = f"{existing_desc}; {new_desc}"
             elif new_desc:
                 merged['description'] = new_desc
-
+        
         # Merge relationship names
         if self.config.enable_edge_name:
             existing_name = existing.get('relation_name', '')
@@ -350,96 +398,78 @@ class EntityRelationGraphBuilder(GraphBuilder):
                 merged['relation_name'] = f"{existing_name}, {new_name}"
             elif new_name:
                 merged['relation_name'] = new_name
-
+        
         # Merge weights
         existing_weight = existing.get('weight', 1.0)
         new_weight = new.get('weight', 1.0)
         merged['weight'] = (existing_weight + new_weight) / 2
-
+        
         return merged
 
 
 class RichKnowledgeGraphBuilder(GraphBuilder):
     """Rich knowledge graph builder"""
-
+    
     async def execute(self, chunks: List[TextChunk], force_rebuild: bool = False) -> Any:
         """Execute rich knowledge graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Rich Knowledge Graph")
-
-        # Try to load from cache first
-        if await self._try_load_cached_graph(force_rebuild):
-            StatusDisplay.show_success(f"Loaded cached graph with {self.graph.number_of_nodes()} nodes and {self.graph.number_of_edges()} edges")
+        
+        if not force_rebuild and self.graph is not None:
+            StatusDisplay.show_info("Using existing graph")
             return self.graph
-
-        # Build graph from scratch
+        
         self.graph = await self._build_graph(chunks)
         StatusDisplay.show_success(f"Rich knowledge graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
-
-        # Save to cache
-        await self._save_graph_to_cache()
-
         return self.graph
-
+    
     async def _build_graph(self, chunks: List[TextChunk]) -> nx.Graph:
         """Build rich knowledge graph"""
         graph = nx.Graph()
-
+        
         total_chunks = len(chunks)
-        batch_size = 128
-        logger.info(f"Processing {total_chunks} chunks in batches of {batch_size}...")
-
-        # Process chunks in batches
-        for batch_start in range(0, total_chunks, batch_size):
-            batch_end = min(batch_start + batch_size, total_chunks)
-            batch_chunks = chunks[batch_start:batch_end]
-
-            # Process batch in parallel
-            tasks = [self._extract_entities_relations(chunk) for chunk in batch_chunks]
-            results = await asyncio.gather(*tasks)
-
-            # Merge batch results into the graph
-            for i, (entities, relationships) in enumerate(results):
-                chunk_idx = batch_start + i + 1
-                ProgressDisplay.show_progress(chunk_idx, total_chunks, f"Building graph (batch {batch_start//batch_size + 1})")
-
-                # Add entity nodes (containing richer information)
-                for entity in entities:
-                    if not graph.has_node(entity.entity_name):
-                        graph.add_node(entity.entity_name, **entity.to_dict())
-                    else:
-                        existing_data = graph.nodes[entity.entity_name]
-                        merged_data = self._merge_entity_data(existing_data, entity.to_dict())
-                        graph.nodes[entity.entity_name].update(merged_data)
-
-                # Add relationship edges (containing keyword information)
-                for relation in relationships:
-                    edge_key = (relation.src_id, relation.tgt_id)
-                    if not graph.has_edge(*edge_key):
-                        graph.add_edge(*edge_key, **relation.to_dict())
-                    else:
-                        existing_data = graph.edges[edge_key]
-                        merged_data = self._merge_relation_data(existing_data, relation.to_dict())
-                        graph.edges[edge_key].update(merged_data)
-
+        for i, chunk in enumerate(chunks):
+            ProgressDisplay.show_progress(i + 1, total_chunks, "Processing text chunks")
+            
+            entities, relationships = await self._extract_entities_relations(chunk)
+            
+            # Add entity nodes (containing richer information)
+            for entity in entities:
+                if not graph.has_node(entity.entity_name):
+                    graph.add_node(entity.entity_name, **entity.to_dict())
+                else:
+                    existing_data = graph.nodes[entity.entity_name]
+                    merged_data = self._merge_entity_data(existing_data, entity.to_dict())
+                    graph.nodes[entity.entity_name].update(merged_data)
+            
+            # Add relationship edges (containing keyword information)
+            for relation in relationships:
+                edge_key = (relation.src_id, relation.tgt_id)
+                if not graph.has_edge(*edge_key):
+                    graph.add_edge(*edge_key, **relation.to_dict())
+                else:
+                    existing_data = graph.edges[edge_key]
+                    merged_data = self._merge_relation_data(existing_data, relation.to_dict())
+                    graph.edges[edge_key].update(merged_data)
+        
         return graph
-
+    
     async def _extract_entities_relations(self, chunk: TextChunk) -> tuple[List[Entity], List[Relationship]]:
         """Extract entities and relationships (containing rich information)"""
         # Use more complex prompts for entity and relationship extraction
         from Core.Prompt import GraphPrompt
-
+        
         # Extract records
         records = await self._extract_records_from_chunk(chunk)
-
+        
         # Build graph
         entities, relationships = await self._build_graph_from_records(records, chunk.chunk_id)
-
+        
         return entities, relationships
-
+    
     async def _extract_records_from_chunk(self, chunk: TextChunk) -> List[str]:
         """Extract records from text chunk"""
         from Core.Common.Utils import split_string_by_multiple_delimiters
-
+        
         # Use LLM to extract structured records
         extraction_prompt = f"""
         Please extract entity and relationship information from the following text in structured format:
@@ -450,18 +480,18 @@ class RichKnowledgeGraphBuilder(GraphBuilder):
         "entity" | Entity Name | Entity Type | Entity Description
         "relation" | Source Entity | Relationship Name | Target Entity | Relationship Description | Keywords
         """
-
+        
         response = await self.llm.aask(extraction_prompt)
-
+        
         # Parse response
         records = split_string_by_multiple_delimiters(response, ['"entity"', '"relation"'])
         return records
-
+    
     async def _build_graph_from_records(self, records: List[str], chunk_id: str) -> tuple[List[Entity], List[Relationship]]:
         """Build graph from records"""
         entities = []
         relationships = []
-
+        
         for record in records:
             if record.startswith('"entity"'):
                 entity = await self._handle_single_entity_extraction(record.split('|'), chunk_id)
@@ -471,36 +501,36 @@ class RichKnowledgeGraphBuilder(GraphBuilder):
                 relationship = await self._handle_single_relation_extraction(record.split('|'), chunk_id)
                 if relationship:
                     relationships.append(relationship)
-
+        
         return entities, relationships
-
+    
     async def _handle_single_entity_extraction(self, record_attributes: List[str], chunk_id: str) -> Optional[Entity]:
         """Handle single entity extraction"""
         from Core.Common.Utils import clean_str
-
+        
         if len(record_attributes) < 4 or record_attributes[0] != '"entity"':
             return None
-
+        
         entity_name = clean_str(record_attributes[1])
         if not entity_name.strip():
             return None
-
+        
         entity = Entity(
             entity_name=entity_name,
             entity_type=clean_str(record_attributes[2]),
             description=clean_str(record_attributes[3]),
             source_id=chunk_id
         )
-
+        
         return entity
-
+    
     async def _handle_single_relation_extraction(self, record_attributes: List[str], chunk_id: str) -> Optional[Relationship]:
         """Handle single relationship extraction"""
         from Core.Common.Utils import clean_str
-
+        
         if len(record_attributes) < 6 or record_attributes[0] != '"relation"':
             return None
-
+        
         relationship = Relationship(
             src_id=clean_str(record_attributes[1]),
             tgt_id=clean_str(record_attributes[3]),
@@ -510,49 +540,43 @@ class RichKnowledgeGraphBuilder(GraphBuilder):
             weight=1.0,
             source_id=chunk_id
         )
-
+        
         return relationship
 
 
 class TreeGraphBuilder(GraphBuilder):
     """Tree graph builder"""
-
+    
     async def execute(self, chunks: List[TextChunk], force_rebuild: bool = False) -> Any:
         """Execute tree graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Tree Graph")
-
-        # Try to load from cache first
-        if await self._try_load_cached_graph(force_rebuild):
-            StatusDisplay.show_success(f"Loaded cached graph with {self.graph.number_of_nodes()} nodes and {self.graph.number_of_edges()} edges")
+        
+        if not force_rebuild and self.graph is not None:
+            StatusDisplay.show_info("Using existing graph")
             return self.graph
-
-        # Build graph from scratch
+        
         self.graph = await self._build_graph(chunks)
         StatusDisplay.show_success(f"Tree graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
-
-        # Save to cache
-        await self._save_graph_to_cache()
-
         return self.graph
-
+    
     async def _build_graph(self, chunks: List[TextChunk]) -> nx.Graph:
         """Build tree graph"""
         # Here implement tree graph building logic
         # Can refer to original TreeGraph implementation
         graph = nx.Graph()
-
+        
         # Simplified tree graph building
         for i, chunk in enumerate(chunks):
             node_id = f"chunk_{i}"
             graph.add_node(node_id, content=chunk.content, metadata=chunk.metadata)
-
+            
             # Add hierarchical relationships
             if i > 0:
                 parent_id = f"chunk_{(i-1)//2}"  # Simple parent-child relationship
                 graph.add_edge(parent_id, node_id, relation_type="hierarchy")
-
+        
         return graph
-
+    
     async def _extract_entities_relations(self, chunk: TextChunk) -> tuple[List[Entity], List[Relationship]]:
         """Extract entities and relationships (not needed for tree graph)"""
         return [], []
@@ -560,7 +584,7 @@ class TreeGraphBuilder(GraphBuilder):
 
 class GraphBuilderFactory:
     """Graph builder factory"""
-
+    
     _builders = {
         GraphType.ENTITY_RELATION: EntityRelationGraphBuilder,
         GraphType.RICH_KNOWLEDGE: RichKnowledgeGraphBuilder,
@@ -568,7 +592,7 @@ class GraphBuilderFactory:
         GraphType.TREE_BALANCED: TreeGraphBuilder,  # Can create specialized balanced tree builder
         GraphType.PASSAGE: EntityRelationGraphBuilder  # Can create specialized passage graph builder
     }
-
+    
     @classmethod
     def create_builder(cls, config: Any, context: Any) -> GraphBuilder:
         """Create graph builder"""
@@ -584,17 +608,17 @@ class GraphBuilderFactory:
             max_gleaning=config.graph.max_gleaning,
             force_rebuild=config.graph.force
         )
-
+        
         builder_class = cls._builders.get(graph_config.graph_type, EntityRelationGraphBuilder)
         return builder_class(graph_config, context)
-
+    
     @classmethod
     def register_builder(cls, graph_type: GraphType, builder_class: type):
         """Register new builder"""
         cls._builders[graph_type] = builder_class
         logger.info(f"Registered new graph builder: {graph_type.value}")
-
+    
     @classmethod
     def get_available_types(cls) -> List[str]:
         """Get available graph types"""
-        return [graph_type.value for graph_type in cls._builders.keys()]
+        return [graph_type.value for graph_type in cls._builders.keys()] 

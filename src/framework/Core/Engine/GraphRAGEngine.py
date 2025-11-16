@@ -6,10 +6,11 @@ from typing import Dict, Any, Optional, List, Union
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 import asyncio
-import os
 from pathlib import Path
 import tiktoken
 from pydantic import BaseModel, Field, model_validator
+
+import networkx as nx
 
 from Core.Common.Logger import logger
 from Core.Common.TimeStatistic import TimeStatistic
@@ -203,6 +204,7 @@ class GraphRAGEngine(BaseModel):
                 # Get data from graph builder for indexing
                 graph_builder = self.registry.get_component("graph_builder")
                 graph = graph_builder.get_graph()
+                
                 
                 # Extract data and metadata from graph for indexing
                 data = []

@@ -1,0 +1,43 @@
+2025-11-16 19:09:13.732 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: graph_builder (general)
+2025-11-16 19:09:13.733 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: document_processor (general)
+2025-11-16 19:09:17.735 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: index_manager (general)
+2025-11-16 19:09:17.737 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: query_processor (general)
+2025-11-16 19:09:17.737 | INFO     | Core.Utils.ComponentRegistry:register_component:273 - ✅ Registered component: storage_manager (general)
+2025-11-16 19:09:18.047 | INFO     | Core.Engine.GraphRAGEngine:process_documents:190 - 🚀 Starting document processing workflow
+2025-11-16 19:09:26.519 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 316 (char 315). Attempted string: {
+        "triples": [
+            ["Running Time"...
+2025-11-16 19:09:26.519 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:09:34.869 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 2751 (char 2750). Attempted string: {
+  "triples": [
+    ["Introduction", "title", "In...
+2025-11-16 19:09:34.870 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:09:40.187 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ':' delimiter: line 1 column 186 (char 185). Attempted string: {
+        "paragraph_index": 1,
+        "passage":...
+2025-11-16 19:09:40.187 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:09:41.855 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 19:10:14.266 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:10:14.342 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 19:10:14.656 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:10:17.920 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 19:10:27.384 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ':' delimiter: line 1 column 13 (char 12). Attempted string: {"recursion", "defines", "linear-time selection"}...
+2025-11-16 19:10:27.385 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:10:45.944 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:10:46.420 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:10:50.288 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ':' delimiter: line 1 column 16 (char 15). Attempted string: {"Backtracking", "strategy", "finds longest increa...
+2025-11-16 19:10:50.288 | WARNING  | Core.Common.Utils:prase_json_from_response:227 - No values could be extracted from the string.
+2025-11-16 19:11:17.553 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:11:17.814 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:11:18.377 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:11:26.964 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Expecting ',' delimiter: line 1 column 3957 (char 3956). Attempted string: {
+        "triples": [
+            ["Dynamic Progr...
+2025-11-16 19:11:26.965 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:11:27.161 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 1352 (char 1351). Attempted string: {
+  "named_entities": [
+    "Dynamic Programming",...
+2025-11-16 19:11:27.162 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.
+2025-11-16 19:11:28.573 | ERROR    | Core.Common.Utils:prase_json_from_response:206 - JSON decoding failed: Invalid \escape: line 1 column 315 (char 314). Attempted string: {
+        "title": "Dynamic Programming: Mātrāvṛtt...
+2025-11-16 19:11:28.574 | INFO     | Core.Common.Utils:prase_json_from_response:229 - JSON data successfully extracted.

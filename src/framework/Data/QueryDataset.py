@@ -34,7 +34,7 @@ class RAGQueryDataset(Dataset):
         
         self.corpus_path = os.path.join(data_dir, "corpus")
         self.qa_path = os.path.join(data_dir, "Question.jsonl")
-        self.dataset = pd.read_json(self.qa_path, lines=True, orient="records")
+        self.dataset = pd.read_json(self.qa_path, lines=True, orient="records")[:5]
 
     def get_corpus(self) -> List[Dict[str, Any]]:
         """
@@ -64,7 +64,7 @@ class RAGQueryDataset(Dataset):
                 docs.append({"title": row['chapter'] + ": " + row['section'] + ", " + row['subsection'] + ", "  + row['subsubsection'],
                             "content": row['content'],
                             "doc_id": i}) 
-        return docs
+        return docs[:20]
 
 
 
