@@ -39,20 +39,20 @@ class RAGQueryDataset(Dataset):
     def get_corpus(self) -> List[Dict[str, Any]]:
         """
         Load and format the corpus data.
-
+        
         Returns:
             List of dictionaries containing corpus documents with title, content, and doc_id
         """
         # corpus = pd.read_json(self.corpus_path)
         # corpus_list = []
-
+        
         # for i in range(len(corpus)):
         #     corpus_list.append({
         #         "title": corpus.iloc[i]["section"] + " " + corpus.iloc[i]["subsection"] + " " + corpus.iloc[i]["subsubsection"],
         #         "content": corpus.iloc[i]["content"],
         #         "doc_id": i,
         #     })
-
+        
 
         docs = []
 
@@ -63,7 +63,7 @@ class RAGQueryDataset(Dataset):
             for i, row in corpus.iterrows():
                 docs.append({"title": row['chapter'] + ": " + row['section'] + ", " + row['subsection'] + ", "  + row['subsubsection'],
                             "content": row['content'],
-                            "doc_id": i})
+                            "doc_id": i}) 
         return docs
 
 
