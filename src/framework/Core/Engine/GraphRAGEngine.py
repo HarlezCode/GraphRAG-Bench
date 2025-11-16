@@ -6,6 +6,7 @@ from typing import Dict, Any, Optional, List, Union
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 import asyncio
+import os
 from pathlib import Path
 import tiktoken
 from pydantic import BaseModel, Field, model_validator

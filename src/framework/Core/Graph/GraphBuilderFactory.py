@@ -48,6 +48,46 @@ class GraphBuilder(ABC):
         self.graph = None
         self.llm = context.llm
         self.encoder = context.encoder
+        self.storage = None
+        self._init_storage()
+    
+    def _init_storage(self):
+        """Initialize graph storage"""
+        try:
+            from Core.Storage.NetworkXStorage import NetworkXStorage
+            # Create a namespace for graph storage
+            namespace = self.context.workspace.make_for("graph")
+            self.storage = NetworkXStorage(namespace=namespace)
+        except Exception as e:
+            logger.warning(f"Failed to initialize graph storage: {e}")
+            self.storage = None
+    
+    async def _try_load_cached_graph(self, force_rebuild: bool = False) -> bool:
+        """Try to load graph from cache"""
+        if force_rebuild or self.storage is None:
+            return False
+        
+        try:
+            if await self.storage.load_nx_graph():
+                self.graph = self.storage.graph
+                logger.info(f"Loaded cached graph with {self.graph.number_of_nodes()} nodes and {self.graph.number_of_edges()} edges")
+                return True
+        except Exception as e:
+            logger.warning(f"Failed to load cached graph: {e}")
+        
+        return False
+    
+    async def _save_graph_to_cache(self):
+        """Save graph to cache"""
+        if self.storage is None or self.graph is None:
+            return
+        
+        try:
+            self.storage.graph = self.graph
+            await self.storage._persist(force=True)
+            logger.info(f"Saved graph to cache: {self.storage._get_graphml_file_path()}")
+        except Exception as e:
+            logger.warning(f"Failed to save graph to cache: {e}")
     
     @abstractmethod
     async def execute(self, chunks: List[TextChunk], force_rebuild: bool = False) -> Any:
@@ -86,14 +126,18 @@ class EntityRelationGraphBuilder(GraphBuilder):
         """Execute entity-relation graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Entity-Relation Graph")
         
-        # Check if rebuild is needed
-        if not force_rebuild and self.graph is not None:
-            StatusDisplay.show_info("Using existing graph")
+        # Try to load from cache first
+        if await self._try_load_cached_graph(force_rebuild):
+            StatusDisplay.show_success(f"Loaded cached graph with {self.graph.number_of_nodes()} nodes and {self.graph.number_of_edges()} edges")
             return self.graph
         
-        # Build graph
+        # Build graph from scratch
         self.graph = await self._build_graph(chunks)
         StatusDisplay.show_success(f"Entity-relation graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
+        
+        # Save to cache
+        await self._save_graph_to_cache()
+        
         return self.graph
     
     async def _build_graph(self, chunks: List[TextChunk]) -> nx.Graph:
@@ -101,31 +145,43 @@ class EntityRelationGraphBuilder(GraphBuilder):
         graph = nx.Graph()
         
         total_chunks = len(chunks)
-        for i, chunk in enumerate(chunks):
-            ProgressDisplay.show_progress(i + 1, total_chunks, "Processing text chunks")
+        batch_size = 100
+        logger.info(f"Processing {total_chunks} chunks in batches of {batch_size}...")
+        
+        # Process chunks in batches
+        for batch_start in range(0, total_chunks, batch_size):
+            batch_end = min(batch_start + batch_size, total_chunks)
+            batch_chunks = chunks[batch_start:batch_end]
             
-            entities, relationships = await self._extract_entities_relations(chunk)
+            # Process batch in parallel
+            tasks = [self._extract_entities_relations(chunk) for chunk in batch_chunks]
+            results = await asyncio.gather(*tasks)
             
-            # Add entity nodes
-            for entity in entities:
-                if not graph.has_node(entity.entity_name):
-                    graph.add_node(entity.entity_name, **entity.to_dict())
-                else:
-                    # Merge entity information
-                    existing_data = graph.nodes[entity.entity_name]
-                    merged_data = self._merge_entity_data(existing_data, entity.to_dict())
-                    graph.nodes[entity.entity_name].update(merged_data)
-            
-            # Add relationship edges
-            for relation in relationships:
-                edge_key = (relation.src_id, relation.tgt_id)
-                if not graph.has_edge(*edge_key):
-                    graph.add_edge(*edge_key, **relation.to_dict())
-                else:
-                    # Merge relationship information
-                    existing_data = graph.edges[edge_key]
-                    merged_data = self._merge_relation_data(existing_data, relation.to_dict())
-                    graph.edges[edge_key].update(merged_data)
+            # Merge batch results into the graph
+            for i, (entities, relationships) in enumerate(results):
+                chunk_idx = batch_start + i + 1
+                ProgressDisplay.show_progress(chunk_idx, total_chunks, f"Building graph (batch {batch_start//batch_size + 1})")
+                
+                # Add entity nodes
+                for entity in entities:
+                    if not graph.has_node(entity.entity_name):
+                        graph.add_node(entity.entity_name, **entity.to_dict())
+                    else:
+                        # Merge entity information
+                        existing_data = graph.nodes[entity.entity_name]
+                        merged_data = self._merge_entity_data(existing_data, entity.to_dict())
+                        graph.nodes[entity.entity_name].update(merged_data)
+                
+                # Add relationship edges
+                for relation in relationships:
+                    edge_key = (relation.src_id, relation.tgt_id)
+                    if not graph.has_edge(*edge_key):
+                        graph.add_edge(*edge_key, **relation.to_dict())
+                    else:
+                        # Merge relationship information
+                        existing_data = graph.edges[edge_key]
+                        merged_data = self._merge_relation_data(existing_data, relation.to_dict())
+                        graph.edges[edge_key].update(merged_data)
         
         return graph
     
@@ -262,12 +318,18 @@ class RichKnowledgeGraphBuilder(GraphBuilder):
         """Execute rich knowledge graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Rich Knowledge Graph")
         
-        if not force_rebuild and self.graph is not None:
-            StatusDisplay.show_info("Using existing graph")
+        # Try to load from cache first
+        if await self._try_load_cached_graph(force_rebuild):
+            StatusDisplay.show_success(f"Loaded cached graph with {self.graph.number_of_nodes()} nodes and {self.graph.number_of_edges()} edges")
             return self.graph
         
+        # Build graph from scratch
         self.graph = await self._build_graph(chunks)
         StatusDisplay.show_success(f"Rich knowledge graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
+        
+        # Save to cache
+        await self._save_graph_to_cache()
+        
         return self.graph
     
     async def _build_graph(self, chunks: List[TextChunk]) -> nx.Graph:
@@ -275,29 +337,41 @@ class RichKnowledgeGraphBuilder(GraphBuilder):
         graph = nx.Graph()
         
         total_chunks = len(chunks)
-        for i, chunk in enumerate(chunks):
-            ProgressDisplay.show_progress(i + 1, total_chunks, "Processing text chunks")
+        batch_size = 100
+        logger.info(f"Processing {total_chunks} chunks in batches of {batch_size}...")
+        
+        # Process chunks in batches
+        for batch_start in range(0, total_chunks, batch_size):
+            batch_end = min(batch_start + batch_size, total_chunks)
+            batch_chunks = chunks[batch_start:batch_end]
             
-            entities, relationships = await self._extract_entities_relations(chunk)
+            # Process batch in parallel
+            tasks = [self._extract_entities_relations(chunk) for chunk in batch_chunks]
+            results = await asyncio.gather(*tasks)
             
-            # Add entity nodes (containing richer information)
-            for entity in entities:
-                if not graph.has_node(entity.entity_name):
-                    graph.add_node(entity.entity_name, **entity.to_dict())
-                else:
-                    existing_data = graph.nodes[entity.entity_name]
-                    merged_data = self._merge_entity_data(existing_data, entity.to_dict())
-                    graph.nodes[entity.entity_name].update(merged_data)
-            
-            # Add relationship edges (containing keyword information)
-            for relation in relationships:
-                edge_key = (relation.src_id, relation.tgt_id)
-                if not graph.has_edge(*edge_key):
-                    graph.add_edge(*edge_key, **relation.to_dict())
-                else:
-                    existing_data = graph.edges[edge_key]
-                    merged_data = self._merge_relation_data(existing_data, relation.to_dict())
-                    graph.edges[edge_key].update(merged_data)
+            # Merge batch results into the graph
+            for i, (entities, relationships) in enumerate(results):
+                chunk_idx = batch_start + i + 1
+                ProgressDisplay.show_progress(chunk_idx, total_chunks, f"Building graph (batch {batch_start//batch_size + 1})")
+                
+                # Add entity nodes (containing richer information)
+                for entity in entities:
+                    if not graph.has_node(entity.entity_name):
+                        graph.add_node(entity.entity_name, **entity.to_dict())
+                    else:
+                        existing_data = graph.nodes[entity.entity_name]
+                        merged_data = self._merge_entity_data(existing_data, entity.to_dict())
+                        graph.nodes[entity.entity_name].update(merged_data)
+                
+                # Add relationship edges (containing keyword information)
+                for relation in relationships:
+                    edge_key = (relation.src_id, relation.tgt_id)
+                    if not graph.has_edge(*edge_key):
+                        graph.add_edge(*edge_key, **relation.to_dict())
+                    else:
+                        existing_data = graph.edges[edge_key]
+                        merged_data = self._merge_relation_data(existing_data, relation.to_dict())
+                        graph.edges[edge_key].update(merged_data)
         
         return graph
     
@@ -399,12 +473,18 @@ class TreeGraphBuilder(GraphBuilder):
         """Execute tree graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Tree Graph")
         
-        if not force_rebuild and self.graph is not None:
-            StatusDisplay.show_info("Using existing graph")
+        # Try to load from cache first
+        if await self._try_load_cached_graph(force_rebuild):
+            StatusDisplay.show_success(f"Loaded cached graph with {self.graph.number_of_nodes()} nodes and {self.graph.number_of_edges()} edges")
             return self.graph
         
+        # Build graph from scratch
         self.graph = await self._build_graph(chunks)
         StatusDisplay.show_success(f"Tree graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
+        
+        # Save to cache
+        await self._save_graph_to_cache()
+        
         return self.graph
     
     async def _build_graph(self, chunks: List[TextChunk]) -> nx.Graph:
