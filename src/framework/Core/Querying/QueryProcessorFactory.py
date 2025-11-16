@@ -138,7 +138,7 @@ class QueryProcessor(ABC):
         
         return keywords
 
-
+newline = "\n"
 class BasicQueryProcessor(QueryProcessor):
     """Basic query processor for standard retrieval and generation."""
     

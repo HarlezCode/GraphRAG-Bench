@@ -2,17 +2,26 @@
 # Usage: Specify method_name in code to select corresponding configuration
 
 # Global default configuration
+llm:
+  api_type: "openai" # or openai
+  model: "gpt-4o-mini"
+  api_key: "YOUR_OPENAI_API_KEY"
+#  api_type: "open_llm" # or openai
+#  base_url: 'http://0.0.0.0:8000/v1'
+#  model: "meta-llama/Meta-Llama-3-8B"
+#  api_key: "ANY_THING_IS_OKAY"
+
 # llm:
-#   api_type: "open_llm"
-#   base_url: 'http://localhost:8000/v1'
-#   model: "meta-llama/Meta-Llama-3-8B-Instruct"
-#   api_key: "EMPTY"
+#  api_type: "openai"
+#  base_url: "https://ai.megallm.io/v1"
+#  model: "openai-gpt-oss-20b"
+#  api_key: "sk-mega-f110024fb04b74d2642de3939f14c504ff67305df9273db3f8a7579e8b6a38c4"
 
 llm:
- api_type: "openai"
- base_url: "https://ai.megallm.io/v1"
- model: "openai-gpt-oss-20b"
- api_key: "sk-mega-f110024fb04b74d2642de3939f14c504ff67305df9273db3f8a7579e8b6a38c4"
+  api_type: "open_llm" # or openai
+  model: "Qwen/Qwen2.5-1.5B-Instruct"
+  api_key: "YOUR_OPENAI_API_KEY"
+  base_url: 'http://0.0.0.0:8000/v1'
 
 embedding:
   api_type: "hf"  # or  ollama / openai.
