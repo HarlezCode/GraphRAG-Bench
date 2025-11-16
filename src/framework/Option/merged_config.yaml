@@ -4,7 +4,7 @@
 # Global default configuration
 llm:
   api_type: "open_llm" # or openai
-  model: "meta-llama/Meta-Llama-3-8B"
+  model: "Qwen/Qwen2.5-1.5B-Instruct"
   api_key: "YOUR_OPENAI_API_KEY"
   base_url: 'http://0.0.0.0:8000/v1'
 #  api_type: "open_llm" # or openai

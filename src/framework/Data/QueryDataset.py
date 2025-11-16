@@ -32,28 +32,41 @@ class RAGQueryDataset(Dataset):
         """
         super().__init__()
         
-        self.corpus_path = os.path.join(data_dir, "Corpus.json")
+        self.corpus_path = os.path.join(data_dir, "corpus")
         self.qa_path = os.path.join(data_dir, "Question.jsonl")
         self.dataset = pd.read_json(self.qa_path, lines=True, orient="records")
 
     def get_corpus(self) -> List[Dict[str, Any]]:
         """
         Load and format the corpus data.
-        
+
         Returns:
             List of dictionaries containing corpus documents with title, content, and doc_id
         """
-        corpus = pd.read_json(self.corpus_path)
-        corpus_list = []
-        
-        for i in range(len(corpus)):
-            corpus_list.append({
-                "title": corpus.iloc[i]["section"] + " " + corpus.iloc[i]["subsection"] + " " + corpus.iloc[i]["subsubsection"],
-                "content": corpus.iloc[i]["content"],
-                "doc_id": i,
-            })
-        
-        return corpus_list
+        # corpus = pd.read_json(self.corpus_path)
+        # corpus_list = []
+
+        # for i in range(len(corpus)):
+        #     corpus_list.append({
+        #         "title": corpus.iloc[i]["section"] + " " + corpus.iloc[i]["subsection"] + " " + corpus.iloc[i]["subsubsection"],
+        #         "content": corpus.iloc[i]["content"],
+        #         "doc_id": i,
+        #     })
+
+
+        docs = []
+
+        old_path = os.path.join(self.corpus_path, "textbook")
+        for i in range(20):
+            path = old_path + str(i+1) + f"/textbook{i+1}_structured.json"
+            corpus = pd.read_json(path)
+            for i, row in corpus.iterrows():
+                docs.append({"title": row['chapter'] + ": " + row['section'] + ", " + row['subsection'] + ", "  + row['subsubsection'],
+                            "content": row['content'],
+                            "doc_id": i})
+        return docs
+
+
 
     def __len__(self) -> int:
         """Get the number of samples in the dataset."""
