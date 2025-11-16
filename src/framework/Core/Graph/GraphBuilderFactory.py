@@ -56,9 +56,14 @@ class GraphBuilder(ABC):
         """Initialize graph storage"""
         try:
             from Core.Storage.NetworkXStorage import NetworkXStorage
-            # Create a namespace for graph storage
-            namespace = self.context.workspace.make_for("graph")
+            # Get LLM model name for cache key
+            llm_model = getattr(self.llm, 'model', None) or getattr(self.llm.config, 'model', 'unknown')
+            # Sanitize model name for filesystem (remove slashes, special chars)
+            safe_model_name = llm_model.replace('/', '_').replace('\\', '_').replace(':', '_')
+            # Create a namespace for graph storage with LLM model name
+            namespace = self.context.workspace.make_for(f"graph_{safe_model_name}")
             self.storage = NetworkXStorage(namespace=namespace)
+            logger.info(f"Initialized graph storage with LLM model: {llm_model}")
         except Exception as e:
             logger.warning(f"Failed to initialize graph storage: {e}")
             self.storage = None
@@ -127,9 +132,9 @@ class EntityRelationGraphBuilder(GraphBuilder):
         """Execute entity-relation graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Entity-Relation Graph")
         
-        # Check if rebuild is needed
-        if not force_rebuild and self.graph is not None:
-            StatusDisplay.show_info("Using existing graph")
+        # Try to load cached graph first
+        if await self._try_load_cached_graph(force_rebuild):
+            StatusDisplay.show_info("Loaded graph from cache")
             return self.graph
         
         # Build graph
@@ -414,11 +419,13 @@ class RichKnowledgeGraphBuilder(GraphBuilder):
         """Execute rich knowledge graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Rich Knowledge Graph")
         
-        if not force_rebuild and self.graph is not None:
-            StatusDisplay.show_info("Using existing graph")
+        # Try to load cached graph first
+        if await self._try_load_cached_graph(force_rebuild):
+            StatusDisplay.show_info("Loaded graph from cache")
             return self.graph
         
         self.graph = await self._build_graph(chunks)
+        await self._save_graph_to_cache()
         StatusDisplay.show_success(f"Rich knowledge graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
         return self.graph
     
@@ -551,11 +558,13 @@ class TreeGraphBuilder(GraphBuilder):
         """Execute tree graph building"""
         StatusDisplay.show_processing_status("Graph Building", details="Tree Graph")
         
-        if not force_rebuild and self.graph is not None:
-            StatusDisplay.show_info("Using existing graph")
+        # Try to load cached graph first
+        if await self._try_load_cached_graph(force_rebuild):
+            StatusDisplay.show_info("Loaded graph from cache")
             return self.graph
         
         self.graph = await self._build_graph(chunks)
+        await self._save_graph_to_cache()
         StatusDisplay.show_success(f"Tree graph building completed, nodes: {self.graph.number_of_nodes()}, edges: {self.graph.number_of_edges()}")
         return self.graph
     
