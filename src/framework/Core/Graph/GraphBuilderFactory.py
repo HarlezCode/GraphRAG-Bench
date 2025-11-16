@@ -226,7 +226,6 @@ class EntityRelationGraphBuilder(GraphBuilder):
         ner_messages = GraphPrompt.NER.format(user_input=text)
         response = await self.llm.aask(ner_messages, format="json")
         
-        entities = []
         if 'named_entities' in response:
             entities = response['named_entities']
         
