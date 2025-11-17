@@ -13,17 +13,30 @@ def evaluation_true_false(answers_path, results_path):
             sum += 1
     return sum/total
 
-def evaluation_mc(answers_path, results_path):
+# def evaluation_mc(answers_path, results_path):
+#     answers = pd.read_json(answers_path, lines=True, orient="records")
+#     results = pd.read_json(results_path)
+#     assert len(answers) == len(results)
+#     sum = 0
+#     total = len(answers)
+#     for index, row in answers.iterrows():
+#         assert row["Question"].lower() == results.iloc[index]["question"].split("Only give a letter indicating choice, A, B, C or D.")[0].rstrip().lower()
+#         if row["Answer"].lower() == results.iloc[index]["answer"].lower():
+#             sum += 1
+#     return sum / total
+
+def evaluation_MC(answers_path, results_path):
     answers = pd.read_json(answers_path, lines=True, orient="records")
-    results = pd.read_json(results_path)
+    results = pd.read_json(results_path, lines=True, orient="records")
     assert len(answers) == len(results)
     sum = 0
     total = len(answers)
     for index, row in answers.iterrows():
-        assert row["Question"].lower() == results.iloc[index]["question"].split("Only give a letter indicating choice, A, B, C or D.")[0].rstrip().lower()
-        if row["Answer"].lower() == results.iloc[index]["answer"].lower():
+        if results.iloc[index]["output"].split('\n')[-1].split("Answer: ")[-1].lower() not in ["a",'b','c','d']:
+            print(index, results.iloc[index]["output"].split('\n')[-1].split("Answer: ")[-1].lower())
+        if row["Answer"].lower() == results.iloc[index]["output"].split('\n')[-1].split("Answer: ")[-1].lower():
             sum += 1
-    return sum / total
+    return sum/total
 
 if __name__ == "__main__":
     print(evaluation_true_false("./dataset/questions/TF.jsonl","./results/qa_20_filter_TF.json"))
