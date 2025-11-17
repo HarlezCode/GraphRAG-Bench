@@ -148,7 +148,7 @@ class BasicQueryProcessor(QueryProcessor):
         
         # Retrieve relevant contexts
         context = await self._retrieve_relevant_contexts(query)
-        
+    
         # Generate response
         response = await self._generate_response(query, context)
         
@@ -158,6 +158,7 @@ class BasicQueryProcessor(QueryProcessor):
     async def _retrieve_relevant_contexts(self, query: str) -> Dict[str, Any]:
         """Retrieve relevant contexts using multiple retrieval strategies."""
         from Core.Common.Constants import Retriever
+        from Core.Retriever.BaseRetriever import TraditionalRAGRetriever
         
         context = {
             "entities": [],
@@ -165,6 +166,13 @@ class BasicQueryProcessor(QueryProcessor):
             "chunks": [],
             "communities": []
         }
+        
+        # Check if using TraditionalRAGRetriever (for traditional RAG methods)
+        if isinstance(self.retriever_context, TraditionalRAGRetriever):
+            # Only retrieve text chunks for traditional RAG
+            chunk_results = await self.retriever_context.retrieve(query, top_k=10)
+            context["chunks"] = chunk_results
+            return context
         
         # Extract query entities
         entities = await self._extract_query_entities(query)

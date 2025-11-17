@@ -5,7 +5,7 @@ Adopts new architecture design providing better modularity and extensibility
 import argparse
 import asyncio
 import os
-os.environ["CUDA_VISIBLE_DEVICES"] = "3"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3"
 import sys
 from pathlib import Path
 from typing import List, Dict, Any
@@ -25,49 +25,60 @@ from Core.Utils.Display import TableDisplay
 
 
 class GraphRAGApplication:
-    """GraphRAG application main class"""
+    """Main application class for GraphRAG evaluation."""
     
-    def __init__(self, config_path: str, dataset_name: str, method_name: str = "hippo_rag"):
+    def __init__(self, config_path: str, dataset_name: str, method_name: str):
+        """Initialize the application with configuration."""
         self.config_path = config_path
         self.dataset_name = dataset_name
         self.method_name = method_name
         self.config = None
         self.engine = None
+        self.corpus_dataset = None
         self.query_dataset = None
+
+    def initialize(self, question_type):
+        """Initialize all components."""
+        logger.info("Initializing GraphRAG Application")
         
-    def initialize(self):
-        """Initialize application"""
-        StatusDisplay.show_info(f"Initializing GraphRAG application with method: {self.method_name}")
-        
-        # Parse configuration
+        # Load configuration
         self.config = Config.parse(Path(self.config_path), dataset_name=self.dataset_name, method_name=self.method_name)
         
-        # Create GraphRAG engine
-        self.engine = GraphRAGEngine(config=self.config)
+        # Initialize data directory
+        data_dir = f"./Data/{self.dataset_name}"
+        os.makedirs(data_dir, exist_ok=True)
         
-        # Load query dataset
+        # Initialize query dataset
         self.query_dataset = RAGQueryDataset(
-            data_dir=os.path.join(self.config.data_root, self.dataset_name)
+            data_dir=data_dir,
+            question_type=question_type
         )
         
-        StatusDisplay.show_success("Application initialization completed")
-    
-    async def process_documents(self, force_rebuild: bool = False):
-        """Process documents"""
-        StatusDisplay.show_info("Starting document processing workflow")
+        # Initialize engine
+        self.engine = GraphRAGEngine(config=self.config)
         
-        try:
-            # Get corpus
+        logger.info("✅ Application initialized successfully")
+
+    async def process_documents(self, force_rebuild: bool = False):
+        """Process documents and build knowledge base."""
+        # Check if this is a traditional RAG method (no graph needed)
+        traditional_rag_methods = ['tfidf_rag', 'bm25_rag']
+        
+        if self.method_name in traditional_rag_methods:
+            logger.info(f"🔍 Using traditional RAG method: {self.method_name}")
+            logger.info("⏭️  Skipping graph construction (not needed for traditional RAG)")
+            
+            # Only process documents for indexing
             corpus = self.query_dataset.get_corpus()
+            await self.engine.process_documents(corpus, force_rebuild=force_rebuild, skip_graph=True)
+        else:
+            logger.info(f"🔍 Using graph-based RAG method: {self.method_name}")
             
-            # Process documents
+            # Full pipeline including graph construction
+            corpus = self.query_dataset.get_corpus()
             await self.engine.process_documents(corpus, force_rebuild=force_rebuild)
-            
-            StatusDisplay.show_success("Document processing completed")
-            
-        except Exception as e:
-            StatusDisplay.show_error(f"Document processing failed: {e}")
-            raise
+        
+        StatusDisplay.show_success("Document processing completed")
     
     async def execute_queries(self, max_queries: int = None) -> List[Dict[str, Any]]:
         """Execute queries"""
@@ -206,6 +217,8 @@ async def main():
     parser.add_argument("--max_queries", type=int, help="Maximum number of queries")
     parser.add_argument("--skip_evaluation", action="store_true", help="Skip evaluation")
     parser.add_argument("--show_info", action="store_true", help="Show system information")
+    parser.add_argument("--question_type", "-q", type=str, help="Type of questions to process")
+
     
     args = parser.parse_args()
     
@@ -214,7 +227,7 @@ async def main():
         app = GraphRAGApplication(args.opt, args.dataset_name, method_name=args.method)
         
         # Initialize
-        app.initialize()
+        app.initialize(question_type=args.question_type)
         
         # Display system information
         if args.show_info:
@@ -250,4 +263,4 @@ if __name__ == "__main__":
     print("CUDA_VISIBLE_DEVICES:", os.environ.get("CUDA_VISIBLE_DEVICES"))
     
     # Run main function
-    asyncio.run(main()) 
+    asyncio.run(main())

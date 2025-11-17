@@ -247,3 +247,12 @@ class BaseRetriever(ABC):
             logger.warning(f"{data_name} is empty")
             return False
         return True
+
+class TraditionalRAGRetriever:
+    def __init__(self, index, chunks):
+        self.index = index
+        self.chunks = chunks
+    
+    async def retrieve(self, query: str, top_k: int = 5):
+        indices = self.index.query(query, top_k=top_k)
+        return [self.chunks[i] for i in indices]

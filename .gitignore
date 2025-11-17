@@ -1,2 +1,5 @@
 *.pyc
 *.log
+graph_Qwen_Qwen2.5-1.5B-Instruct_nx_data.graphml
+*.json
+*.md

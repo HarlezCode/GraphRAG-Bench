@@ -35,7 +35,7 @@ class TFIDFIndex(BaseIndex[IndexDict]):
         
         Sets up the TF-IDF vectorizer for document processing and similarity search.
         """
-        self.vectorizer = TfidfVectorizer()
+        self.vectorizer = TfidfVectorizer(stop_words='english', min_df=0.01, max_df=0.95, ngram_range=(1,2), sublinear_tf=True)
         self.tfidf_matrix = None
 
     def _insert(self, nodes: Sequence[BaseNode], **insert_kwargs: Any) -> None:
@@ -150,6 +150,9 @@ class TFIDFIndex(BaseIndex[IndexDict]):
         Returns:
             List of document indices sorted by similarity score
         """
+        if self.tfidf_matrix is None:
+            raise ValueError("Index not built. Call _build_index_from_list first.")
+        
         # Transform the query using the fitted vectorizer
         query_emb = self.vectorizer.transform([query_str])
         
@@ -161,6 +164,33 @@ class TFIDFIndex(BaseIndex[IndexDict]):
         idxs = cosine_sim.argsort()[::-1][:top_k]
         
         return idxs.tolist()
+    
+    def query_with_scores(self, query_str: str, top_k: int = 10) -> tuple[List[int], List[float]]:
+        """
+        Query the TF-IDF index and return both indices and scores.
+        
+        Args:
+            query_str: Query string to search for
+            top_k: Number of top results to return
+            
+        Returns:
+            Tuple of (indices, scores)
+        """
+        if self.tfidf_matrix is None:
+            raise ValueError("Index not built. Call _build_index_from_list first.")
+        
+        # Transform the query using the fitted vectorizer
+        query_emb = self.vectorizer.transform([query_str])
+        
+        # Calculate cosine similarity between query and all documents
+        cosine_sim = cosine_similarity(query_emb, self.tfidf_matrix).flatten()
+
+        # Get top-k most similar documents
+        top_k = min(top_k, len(cosine_sim))
+        idxs = cosine_sim.argsort()[::-1][:top_k]
+        scores = cosine_sim[idxs]
+        
+        return idxs.tolist(), scores.tolist()
 
     def query_batch(self, queries: List[str], top_k: int) -> List[List[int]]:
         """

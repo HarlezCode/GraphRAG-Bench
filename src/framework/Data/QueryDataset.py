@@ -23,7 +23,7 @@ class RAGQueryDataset(Dataset):
         dataset: Pandas DataFrame containing the question-answer data
     """
 
-    def __init__(self, data_dir: str):
+    def __init__(self, data_dir: str, question_type):
         """
         Initialize the RAG query dataset.
         
@@ -32,9 +32,10 @@ class RAGQueryDataset(Dataset):
         """
         super().__init__()
         
+        self.question_type = question_type
         self.corpus_path = os.path.join(data_dir, "corpus")
-        self.qa_path = os.path.join(data_dir, "Question.jsonl")
-        self.dataset = pd.read_json(self.qa_path, lines=True, orient="records")[:5]
+        self.qa_path = os.path.join(data_dir, "questions", f"{question_type.upper()}.jsonl")
+        self.dataset = pd.read_json(self.qa_path, lines=True, orient="records")
 
     def get_corpus(self) -> List[Dict[str, Any]]:
         """
@@ -64,7 +65,7 @@ class RAGQueryDataset(Dataset):
                 docs.append({"title": row['chapter'] + ": " + row['section'] + ", " + row['subsection'] + ", "  + row['subsubsection'],
                             "content": row['content'],
                             "doc_id": i}) 
-        return docs[:20]
+        return docs
 
 
 
@@ -86,13 +87,27 @@ class RAGQueryDataset(Dataset):
         answer = self.dataset.iloc[idx]["Answer"]
         other_attrs = self.dataset.iloc[idx].drop(["Answer", "Question"])
         
-        return {
-            "id": idx,
-            "question": question,
-            "answer": answer,
-            **other_attrs
-        }
-
+        ## TF
+        if self.question_type.upper() == "TF":
+            question += " Only give a boolean answer, False or True."
+            return {
+                "id": idx,
+                "question": question,
+                "answer": answer,
+                **other_attrs
+            }
+        elif self.question_type.upper() == "MC":
+            ## MC
+            choices = ", ".join([f'{key}: {self.dataset.iloc[idx]["Choices"][key]}' for key in self.dataset.iloc[idx]["Choices"].keys()])
+            question = "Answer the following question with one letter, A, B, C, or D. " + question + f" {choices}" 
+            return {
+                "id": idx,
+                "question": question,
+                "answer": answer,
+                **other_attrs
+            }
+        else:
+            raise ValueError(f"Unsupported question type: {self.question_type}")
 
 if __name__ == "__main__":
     # Example usage

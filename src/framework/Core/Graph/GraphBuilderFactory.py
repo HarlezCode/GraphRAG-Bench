@@ -146,10 +146,10 @@ class EntityRelationGraphBuilder(GraphBuilder):
         return self.graph
     
 
-    async def _build_graph_batched(self, chunks: List[TextChunk], batch_size: int = 10) -> nx.Graph:
+    async def _build_graph_batched(self, chunks: List[TextChunk], batch_size: int = 100) -> nx.Graph:
         """Process chunks in batches with controlled concurrency"""
         graph = nx.Graph()
-        semaphore = asyncio.Semaphore(10)  # Limit concurrent operations
+        semaphore = asyncio.Semaphore(batch_size)  # Limit concurrent operations
         
         async def process_chunk_with_semaphore(chunk):
             async with semaphore:
@@ -280,18 +280,32 @@ class EntityRelationGraphBuilder(GraphBuilder):
 
         # Convert to Entity and Relationship objects
         entity_objects = []
-        for entity_name in entities:
+        for entity_item in entities:
+            # Handle different entity formats
+            if isinstance(entity_item, dict):
+                # Entity is a dictionary like {'entity': 'MYCIN', 'type': 'Organization'}
+                entity_name = entity_item.get('entity') or entity_item.get('name') or str(entity_item)
+                entity_type = entity_item.get('type', '')
+            elif isinstance(entity_item, str):
+                # Entity is a simple string
+                entity_name = entity_item
+                entity_type = ''
+            else:
+                # Unknown format, skip
+                continue
+            
             # Skip None or empty entity names
             if not entity_name or str(entity_name).strip() in ('', 'N/A', 'None', 'null'):
                 continue
 
             entity = Entity(
-                entity_name=entity_name,
-                entity_type="",  # Can be extracted from NER results
+                entity_name=str(entity_name).strip(),
+                entity_type=str(entity_type).strip() if entity_type else "",
                 description="",
                 source_id=chunk.chunk_id
             )
             entity_objects.append(entity)
+
 
         relationship_objects = []
         for rel in relationships:
@@ -333,12 +347,21 @@ class EntityRelationGraphBuilder(GraphBuilder):
         
         return entities
     
-    async def _openie_extraction(self, text: str, entities: List[str]) -> List[tuple]:
+    async def _openie_extraction(self, text: str, entities: List) -> List[tuple]:
         """Open information extraction"""
         from Core.Prompt import GraphPrompt
         import json
         
-        named_entity_json = {"named_entities": entities}
+        # Extract entity names from the entities list (which might be dicts or strings)
+        entity_names = []
+        for entity in entities:
+            if isinstance(entity, dict):
+                entity_name = entity.get('entity') or entity.get('name') or str(entity)
+            else:
+                entity_name = str(entity)
+            entity_names.append(entity_name)
+        
+        named_entity_json = {"named_entities": entity_names}
         openie_messages = GraphPrompt.OPENIE_POST_NET.format(
             passage=text,
             named_entity_json=json.dumps(named_entity_json)

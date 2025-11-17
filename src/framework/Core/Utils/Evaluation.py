@@ -416,6 +416,8 @@ class Evaluator:
         Returns:
             Dictionary containing evaluation results
         """
+        import ipdb; ipdb.set_trace()
+        
         df = pd.read_json(self.eval_path, lines=True)
         print(f"Loaded {len(df)} records from {self.eval_path}")
         print(f"Evaluating {self.mode} mode.")

@@ -6,6 +6,7 @@ from typing import Dict, Any, Optional, List, Union
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 import asyncio
+import os
 from pathlib import Path
 import tiktoken
 from pydantic import BaseModel, Field, model_validator
@@ -179,15 +180,16 @@ class GraphRAGEngine(BaseModel):
             "query_processing": self.registry.get_component("query_processor")
         }
     
-    async def process_documents(self, documents: Union[str, List[Any]], force_rebuild: bool = False):
+    async def process_documents(self, documents: Union[str, List[Any]], force_rebuild: bool = False, skip_graph: bool = False):
         """
-        Main entry point for document processing
+        Process documents through the complete pipeline.
         
         Args:
-            documents: Documents to process
-            force_rebuild: Whether to force rebuild
+            documents: Documents to process (file path or list of documents)
+            force_rebuild: Whether to force rebuild even if cached data exists
+            skip_graph: Whether to skip graph construction (for traditional RAG methods)
         """
-        logger.info("🚀 Starting document processing workflow")
+        logger.info("🚀 Starting document processing pipeline")
         
         try:
             # Stage 1: Document processing
@@ -195,34 +197,43 @@ class GraphRAGEngine(BaseModel):
                 await self._execute_stage("document_processing", documents)
             
             # Stage 2: Graph building
-            if self.context.pipeline.graph_building_enabled:
+            if self.context.pipeline.graph_building_enabled and skip_graph == False:
                 chunks = await self.registry.get_component("document_processor").get_processed_chunks()
                 await self._execute_stage("graph_construction", chunks, force_rebuild)
+            else:
+                logger.info("⏭️  Skipping graph construction stage")
+                chunks = await self.registry.get_component("document_processor").get_processed_chunks()
             
             # Stage 3: Index building
             if self.context.pipeline.indexing_enabled:
-                # Get data from graph builder for indexing
-                graph_builder = self.registry.get_component("graph_builder")
-                graph = graph_builder.get_graph()
+                if skip_graph:
+                    # For traditional RAG, use chunks directly without graph
+                    data = [chunk.content for chunk in chunks]
+                    metadata = [{"chunk_id": chunk.chunk_id, "source_id": chunk.chunk_id} for chunk in chunks]
+                else:
+                    # For graph-based RAG, use graph nodes
+                    graph_builder = self.registry.get_component("graph_builder")
+                    graph = graph_builder.get_graph()
+                    
+                    data = []
+                    metadata = []
+                    for node_id, node_data in graph.nodes(data=True):
+                        content = node_data.get('description', '') or node_data.get('entity_name', '')
+                        data.append(content)
+                        metadata.append({
+                            'node_id': node_id,
+                            'entity_name': node_data.get('entity_name', ''),
+                            'entity_type': node_data.get('entity_type', ''),
+                            'source_id': node_data.get('source_id', '')
+                        })
                 
-                
-                # Extract data and metadata from graph for indexing
-                data = []
-                metadata = []
-                
-                # Get nodes data from networkx graph
-                for node_id, node_data in graph.nodes(data=True):
-                    # Use description or entity_name as content for indexing
-                    content = node_data.get('description', '') or node_data.get('entity_name', '')
-                    data.append(content)
-                    metadata.append({
-                        'node_id': node_id,
-                        'entity_name': node_data.get('entity_name', ''),
-                        'entity_type': node_data.get('entity_type', ''),
-                        'source_id': node_data.get('source_id', '')
-                    })
-                
+                # Finish building index in IndexManager
                 await self._execute_stage("index_building", data, metadata, force_rebuild)
+                
+                # For traditional RAG, also store the TextChunk objects in the index manager
+                if skip_graph:
+                    index_manager = self.registry.get_component("index_manager")
+                    index_manager.text_chunks = chunks  # Store actual TextChunk objects
             
             # Stage 4: Graph augmentation (optional)
             if self.context.pipeline.augmentation_enabled:
@@ -233,14 +244,14 @@ class GraphRAGEngine(BaseModel):
                 await self._execute_community_detection()
             
             # Build retrieval context
-            await self._build_retriever_context()
+            await self._build_retriever_context(skip_graph=skip_graph)
             
-            logger.info("✅ Document processing workflow completed")
+            logger.info("✅ Document processing pipeline completed successfully")
             
         except Exception as e:
-            logger.error(f"❌ Document processing failed: {e}")
+            logger.error(f"❌ Document processing pipeline failed: {e}")
             raise
-    
+
     async def _execute_stage(self, stage_name: str, *args, **kwargs):
         """Execute processing stage"""
         stage = self.processing_stages.get(stage_name)
@@ -265,8 +276,12 @@ class GraphRAGEngine(BaseModel):
         if hasattr(graph_builder, 'detect_communities'):
             await graph_builder.detect_communities()
     
-    async def _build_retriever_context(self):
-        """Build retrieval context"""
+    async def _build_retriever_context(self, skip_graph: bool = False):
+        """Build retrieval context
+        
+        Args:
+            skip_graph: Whether to skip graph-related components (for traditional RAG)
+        """
         logger.info("🔧 Building retrieval context")
         
         # Create MixRetriever instance
@@ -274,6 +289,33 @@ class GraphRAGEngine(BaseModel):
         
         # Build context for retriever
         retriever_context = RetrieverContext()
+        
+        # For traditional RAG methods, we don't need graph-related components
+        if skip_graph:
+            logger.info("⏭️  Skipping graph-related retriever components for traditional RAG")
+            
+            # Use TraditionalRAGRetriever for traditional RAG methods
+            from Core.Retriever.BaseRetriever import TraditionalRAGRetriever
+            index_manager = self.registry.get_component("index_manager")
+            
+            # Use the TextChunk objects already stored in index_manager
+            traditional_retriever = TraditionalRAGRetriever(
+                index=index_manager.text_chunks_index,
+                chunks=index_manager.text_chunks
+            )
+            
+            self.context.retriever_context = traditional_retriever
+            
+            # Update query processor's retriever_context
+            query_processor = self.registry.get_component("query_processor")
+            if query_processor:
+                query_processor.retriever_context = traditional_retriever
+            
+            # Create query processor
+            self._querier = self.registry.get_component("query_processor")
+            
+            logger.info("✅ Built simplified retriever context for traditional RAG")
+            return
         
         # Get the networkx graph and create a wrapper with required methods
         nx_graph = self.registry.get_component("graph_builder").get_graph()
